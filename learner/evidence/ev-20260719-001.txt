@@ -1,0 +1,21 @@
+evidence_id: ev-20260719-001
+topic: linux-shell (P2)
+mastery: apply
+verified_at: 2026-07-20T19:28:00+08:00
+independence: guided
+
+证明学员掌握了 Linux 终端基础：
+
+1. WSL2 跨日安装完成（中途遇到 0x80370114 错误，通过「启用 Windows 功能中的虚拟机平台」解决）
+2. Ubuntu 初始化完成，用户名 clnk，密码已设置
+3. 成功修复 PATH 环境变量：
+   - 临时修复：export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+   - 永久修复：echo 'export PATH=...' >> ~/.bashrc
+4. 基础命令全部工作：
+   - ls 列文件（看到 hello.txt）
+   - touch 创建文件
+   - echo 输出内容
+   - pwd/cd 路径导航
+5. 理解了 PATH 环境变量的作用（PATH 告诉系统去哪里找命令）
+
+学员反馈：理解了"没反应（空白）"不等于"没修好"——之前是 command not found，现在是空白说明没报错。

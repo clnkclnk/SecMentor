@@ -1,0 +1,21 @@
+# ===== 敏感信息 - 绝对不能上传 =====
+# 剪贴板截图（含 Cookie / 个人信息）
+.workbuddy/clipboard-images/
+# 临时二进制文件（含 Cookie 截图等）
+.workbuddy/blobs/
+
+# ===== 运行时缓存 - 不需要版本控制 =====
+.workbuddy/memory/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# ===== 第三方依赖 =====
+node_modules/
+*.egg-info/
+
+# ===== 构建产物 =====
+dist/
+build/
+*.zip

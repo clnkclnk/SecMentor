@@ -1,0 +1,24 @@
+Evidence: os-process-file (P1)
+Date: 2026-07-18 21:30 +08:00
+Mastery: understand
+Independence: guided
+
+学员操作：
+1. tasklist | findstr notepad —— 无输出（Win11 新版记事本进程名变化，命令行搜不到）
+2. 切换到任务管理器 → 详细信息选项卡 → 找到 notepad.exe PID = 9568
+3. tasklist | findstr msedge —— 看到 Edge 20+ 个进程（msedge.exe + msedgewebview2.exe）
+
+理解点：
+- 程序 vs 进程：程序是静态文件(notepad.exe)，进程是运行实例（双击打开的窗口）
+- PID 是进程的唯一身份证，用于排查网络连接归属、木马定位
+- 一个程序可对应多个进程（开两个记事本=两个进程）
+- 浏览器多进程架构 = 进程隔离，每个标签页独立内存空间，一个崩了不连累其他，一个被攻击也偷不到别人数据（安全设计）
+
+验收问答：
+Q: 为什么 Edge 要把每个标签页拆成独立进程而不是像记事本那样一个进程？
+A（学员选）: A. 每个网页需要独立内存空间，一个网页出问题不会影响其他网页和整个浏览器。
+判定: 正确，通过。
+
+排障记录：Win11 新版记事本(Store应用)用 tasklist|findstr notepad 搜不到，改用任务管理器查看。此为环境适配，不影响学习目标。
+
+下一阶段：P2 Linux 与工作环境（linux-shell）

@@ -1,0 +1,34 @@
+# 示范小课目录：topic / planned 关键词 → 课 id
+# Agent 开课前先查这里；命中则按 content/lessons/<path> 带教。
+
+version: 1
+lessons:
+  - id: L01-how-hacked
+    path: web/L01-how-hacked.md
+    covers: [orientation, ethics-lab-policy]
+    keywords: [渗透概述, 怎么被入侵, 入门]
+
+  - id: L02-http-letter
+    path: web/L02-http-letter.md
+    covers: [http-basics, burp-intro]
+    keywords: [HTTP, 请求响应, 报文, Yakit抓包]
+
+  - id: L03-cookie-wristband
+    path: web/L03-cookie-wristband.md
+    covers: [cookie-session]
+    keywords: [Cookie, Session, 会话, 登录态]
+
+  - id: L04-sqli-data-as-code
+    path: web/L04-sqli-data-as-code.md
+    covers: [sql-injection]
+    keywords: [SQL注入, SQLi, 注入]
+
+  - id: C01-iam-currency
+    path: cloud/C01-iam-currency.md
+    covers: [cloud-iam]
+    keywords: [IAM, 身份, 权限, 云安全, AccessKey]
+
+  - id: C02-metadata-side-door
+    path: cloud/C02-metadata-side-door.md
+    covers: [cloud-metadata]
+    keywords: [元数据, metadata, 169.254, IMDSv2]

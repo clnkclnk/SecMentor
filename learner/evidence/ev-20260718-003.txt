@@ -1,0 +1,17 @@
+Evidence ID: ev-20260718-003
+Topic: net-ip-port (P1)
+Type: lab_observation
+Source: terminal_output (nslookup) + chat
+Independence: guided
+Mastery: apply
+Result: passed
+Observed at: 2026-07-18T18:50:00+08:00
+
+观察内容：
+1. 学员在 Windows 命令行执行 `nslookup baidu.com`，输出显示本地DNS服务器 45.135.40.24，
+   百度域名解析到 4 个 IP：110.242.74.102 / 111.63.65.103 / 111.63.65.247 / 124.237.177.164。
+2. 学员初次回答 DNS 作用时偏向"分流/插板"概念（实为CDN负载均衡），经引导后正确表述：
+   "没有DNS必须输入 110.242.74.102，因为机器只认数字" —— 准确点出 DNS = 名字翻译成数字的核心。
+
+环境：Windows 本机 cmd
+总结：学员能动手执行DNS查询命令，并在引导下正确解释DNS解决"人记名字、机器认数字"的问题，达到 apply 级。

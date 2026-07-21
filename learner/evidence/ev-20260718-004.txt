@@ -1,0 +1,18 @@
+Evidence ID: ev-20260718-004
+Topic: net-tcp-http (P1)
+Type: lab_observation
+Source: terminal_output (netstat) + chat
+Independence: guided
+Mastery: understand
+Result: passed
+Observed at: 2026-07-18T19:12:00+08:00
+
+观察内容：
+1. 学员在 Windows 命令行执行 `netstat -ano | findstr :443`，输出显示本机 192.168.0.100
+   与多个远程服务器 443 端口的 ESTABLISHED/TIME_WAIT 连接，本地端口各不相同（2259, 2266, 5900...）。
+2. 初次问"为何本地端口各不相同"时答"不知道"。
+3. 经"办公室分机号"比喻引导后，正确回答"靠本地IP加后缀(端口)区分"——
+   准确点出 IP+端口 组合用于区分不同程序/连接。
+
+环境：Windows 本机 cmd
+总结：学员能动手执行 netstat 观察活动连接，经引导理解端口区分不同程序的核心概念，达到 understand 级。

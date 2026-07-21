@@ -1,0 +1,14 @@
+id: http-observation
+title: HTTP 观察与改参（示例）
+covers: [http-basics, burp-intro, browser-devtools]
+optional: true
+objective:
+  - 拆解请求行/头与响应状态
+  - 修改查询参数并观察结果变化
+environment_requirements:
+  - 本地可访问的 HTTP 服务
+  - 能用浏览器或代理看到完整请求
+acceptance:
+  - 能指出方法、路径、一个查询参数、状态码
+  - 能解释改参后响应如何变
+notes: compose 仅为示例；可用任意等价服务替代。

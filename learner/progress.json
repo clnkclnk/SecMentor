@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.1",
+  "learner": {
+    "display_name": "clnk",
+    "timezone": "Asia/Shanghai"
+  },
+  "placement": {
+    "status": "done",
+    "completed_at": "2026-07-18T16:45:00+08:00",
+    "profile": {
+      "background": "计算机应用技术专科，专升本上岸",
+      "programming": "C/Python 入门级，能读基础语法",
+      "hands_on": "用过命令行，无 VM/Docker 经验",
+      "security": "零基础，知道 Burp Suite 名词和基本 HTTP 概念",
+      "time_per_week_h": 42,
+      "motivation": "升学后准备实习与就业",
+      "pace_preference": "边学边练"
+    },
+    "scores": {
+      "net": "recall",
+      "linux": "none",
+      "http": "understand",
+      "webapp": "understand",
+      "prog": "recall",
+      "sec": "understand",
+      "tooling": "understand"
+    },
+    "recommended_start_after_p0": "P1"
+  },
+  "path": {
+    "track": "web-security",
+    "mode": "steady",
+    "focus_next_week": [],
+    "skipped_topics": [],
+    "still_fuzzy": []
+  },
+  "current_stage": "P3",
+  "current_topic": "web-auth-state",
+  "active_failure": null,
+  "stages": {
+    "P0": {
+      "status": "completed",
+      "completed_at": "2026-07-18T16:52:00+08:00",
+      "topics": {
+        "ethics-scope": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260718-001"], "completed_at": "2026-07-18T16:48:00+08:00" },
+        "learning-loop": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260718-002"], "completed_at": "2026-07-18T16:52:00+08:00" }
+      }
+    },
+    "P1": {
+      "status": "completed",
+      "completed_at": "2026-07-18T21:30:00+08:00",
+      "topics": {
+        "net-ip-port": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260718-003"], "completed_at": "2026-07-18T18:50:00+08:00" },
+        "net-tcp-http": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260718-004"], "completed_at": "2026-07-18T19:12:00+08:00" },
+        "os-process-file": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260718-005"], "completed_at": "2026-07-18T21:30:00+08:00" }
+      }
+    },
+    "P2": {
+      "status": "completed",
+      "completed_at": "2026-07-20T20:22:00+08:00",
+      "topics": {
+        "linux-shell": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260719-001"], "started_at": "2026-07-18T21:30:00+08:00", "completed_at": "2026-07-20T19:28:00+08:00" },
+        "linux-process-net": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "lab-vm": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-002"], "started_at": "2026-07-20T19:28:00+08:00", "completed_at": "2026-07-20T20:22:00+08:00" }
+      }
+    },
+    "P3": {
+      "status": "in_progress",
+      "topics": {
+        "web-http": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-003"], "started_at": "2026-07-20T20:22:00+08:00", "completed_at": "2026-07-20T21:34:00+08:00" },
+        "web-request-response": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-004"], "started_at": "2026-07-20T21:34:00+08:00", "completed_at": "2026-07-20T21:54:00+08:00" },
+        "web-auth-state": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-005"], "started_at": "2026-07-20T21:54:00+08:00", "completed_at": "2026-07-20T22:37:00+08:00" },
+        "web-client-server": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "web-proxy-intro": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "web-browser-tools": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "web-devtools": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "web-https-tls": { "status": "available", "mastery": "none", "evidence_ids": [] }
+      }
+    }
+  },
+  "skills_radar": {
+    "net": 3,
+    "linux": 3.5,
+    "http": 4,
+    "webapp": 3,
+    "prog": 1,
+    "sec": 2.5,
+    "tooling": 2.5
+  },
+  "preferences": {
+    "language": "zh-CN",
+    "quiz_channel": "chat",
+    "celebrations": true
+  },
+  "streak": {
+    "days": 2,
+    "last_study_date": "2026-07-20"
+  },
+  "motivation": {
+    "points_total": 270,
+    "points_today": 125,
+    "points_today_date": "2026-07-20",
+    "level": 4,
+    "title": "名动一方",
+    "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4"],
+    "last_encouragement_at": "2026-07-20T21:54:00+08:00",
+    "pending_celebration": null
+  },
+  "last_weekly_review": null,
+  "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-20T21:54:00+08:00",
+      "summary": "P3 web-request-response passed。学员用F12网络面板观察百度首页（78个请求），理解一个网页=多个请求组成，Cookie在每个请求中自动携带。+25分，升至 Level 4 名动一方。"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-20T21:34:00+08:00",
+      "summary": "P3 web-http passed。学员用 curl -v http://example.com 亲手观察完整HTTP请求-响应，正确识别GET无Body、POST适合传密码。+25分。"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-20T20:22:00+08:00",
+      "summary": "P2 lab-vm passed。学员成功安装 Docker 并完成加速器配置（含中科大/163证书问题排查），docker run hello-world 验证成功。+25分。"
+    },
+    {
+      "type": "stage_completed",
+      "ts": "2026-07-20T20:22:00+08:00",
+      "summary": "P2 Linux 与工作环境阶段完成。linux-shell + lab-vm 全部 passed。WSL2 + Docker 环境就绪，进入 P3 Web 前置基础。"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-20T19:28:00+08:00",
+      "summary": "P2 linux-shell passed。学员成功安装 WSL2 Ubuntu，亲手修复 PATH 环境变量，掌握 ls/pwd/cd/touch 等基础命令。+25分。"
+    },
+    {
+      "type": "stage_completed",
+      "ts": "2026-07-18T21:30:00+08:00",
+      "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
+    }
+  ],
+  "updated_at": "2026-07-20T21:54:00+08:00"
+}

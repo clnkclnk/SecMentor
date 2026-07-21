@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SecMentorInboxReply",
+  "type": "object",
+  "required": ["schema_version", "kind", "submitted_at", "answers"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "kind": {
+      "type": "string",
+      "description": "placement-interview | placement-quiz | daily-check | generic-quiz"
+    },
+    "page": { "type": "string" },
+    "submitted_at": { "type": "string" },
+    "display_name": { "type": "string" },
+    "language": { "type": "string" },
+    "reply_text": {
+      "type": "string",
+      "description": "人类可读汇总，可直接等同于聊天粘贴"
+    },
+    "answers": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "array", "items": { "type": "string" } }
+        ]
+      }
+    },
+    "meta": { "type": "object" }
+  }
+}

@@ -1,0 +1,24 @@
+Evidence: P2 lab-vm (Docker 实验室)
+Learner: clnk
+Date: 2026-07-20
+Topic: lab-vm (Docker VM Lab)
+Stage: P2
+Outcome: PASS
+Independence: guided
+
+=== 验收记录 ===
+
+Q: 执行 docker run hello-world 验证 Docker 安装成功
+
+A: 学员经历完整 Docker 安装流程：
+  1. apt install docker.io 安装成功
+  2. 配置 Docker 镜像加速器（daemon.json），排查中科大/163 证书问题
+  3. 最终 docker run hello-world 成功输出 "Hello from Docker!" 和详细安装步骤说明
+
+=== 操作证据 ===
+  - 终端输出包含 Pull complete + Digest + Hello from Docker! 确认成功
+  - 镜像加速器配置路径：/etc/docker/daemon.json
+  - 重启 docker 服务命令：sudo systemctl restart docker
+
+=== 导师评语 ===
+学员是零基础首次接触 Docker，在镜像源连接失败（x509 证书问题）时能够耐心排查，最终通过更换镜像源和关闭代理解决问题。环境基础已就绪，后续可直接用 Docker 启动靶场。25 分。

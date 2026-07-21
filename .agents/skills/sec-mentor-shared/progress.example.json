@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "learner": {
+    "display_name": "示例学员",
+    "timezone": "Asia/Shanghai",
+    "os": "macOS",
+    "weekly_hours": 7
+  },
+  "placement": {
+    "status": "done",
+    "completed_at": "2026-07-17T12:00:00+08:00",
+    "profile": {
+      "background": "student_non_cs",
+      "programming": "almost_none"
+    },
+    "scores": { "net": 1, "http": 1, "linux": 1 },
+    "summary": "beginner",
+    "recommended_start_after_p0": "P1"
+  },
+  "path": {
+    "track": "web-security",
+    "mode": "steady",
+    "focus_next_week": ["ethics-scope", "learning-loop"],
+    "skipped_topics": [],
+    "still_fuzzy": []
+  },
+  "current_stage": "P0",
+  "current_topic": "ethics-scope",
+  "active_failure": null,
+  "stages": {
+    "P0": {
+      "status": "in_progress",
+      "topics": {
+        "ethics-scope": { "status": "in_progress", "mastery": "none", "fail_count": 0, "evidence_ids": [] }
+      }
+    }
+  },
+  "skills_radar": {},
+  "preferences": {
+    "language": "zh-CN",
+    "quiz_channel": "chat",
+    "celebrations": true
+  },
+  "streak": { "days": 1, "last_study_date": "2026-07-17" },
+  "motivation": {
+    "points_total": 15,
+    "points_today": 15,
+    "points_today_date": "2026-07-17",
+    "level": 1,
+    "title": "初出茅庐",
+    "milestones_unlocked": ["ms-first-login"],
+    "last_encouragement_at": "2026-07-17T12:00:00+08:00",
+    "pending_celebration": null
+  },
+  "last_weekly_review": null,
+  "recent_events": [
+    {
+      "type": "placement_completed",
+      "at": "2026-07-17T12:00:00+08:00",
+      "summary": "摸底完成；P0 后建议从 P1"
+    }
+  ],
+  "updated_at": "2026-07-17T12:00:00+08:00"
+}

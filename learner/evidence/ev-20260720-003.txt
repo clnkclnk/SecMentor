@@ -1,0 +1,36 @@
+Evidence ev-20260720-003
+Topic: P3 web-http
+Learner: clnk
+Date: 2026-07-20T21:34:00+08:00
+Mastery: apply (guided)
+
+操作记录:
+学员在 WSL2 Ubuntu 中执行: curl -v http://example.com
+
+观察到的完整输出:
+- 连接过程: DNS解析 example.com → 172.66.147.243 (Cloudflare CDN) → TCP连接 80端口
+- 请求行: GET / HTTP/1.1
+- 请求头: Host, User-Agent: curl/8.5.0, Accept: */*
+- 请求体: 无 (GET 请求)
+- 状态行: HTTP/1.1 200 OK
+- 响应头: Content-Type: text/html, Server: cloudflare, cf-cache-status: HIT 等
+- 响应体: example.com 首页 HTML 源码
+
+验收问答:
+Q1: 这次请求有没有请求体？为什么？
+A1: 没有，因为用的 GET 请求行。✅ 正确
+
+Q2: 模拟提交登录表单用 GET 还是 POST？为什么？
+A2: 用 POST，因为用 GET 名字密码太容易被看到，POST 起码在请求体里。✅ 正确（已具备安全视角，理解 URL 暴露风险）
+
+核心掌握点:
+- HTTP 报文三段式结构（请求行/头/体，响应状态行/头/体）
+- GET vs POST 的区别与安全含义
+- 用 curl -v 观察完整 HTTP 交互
+- 状态码 200 = 成功
+- 请求头和响应头的对称结构
+
+补充概念（已渗透讲解）:
+- Cloudflare CDN 缓存命中 (cf-cache-status: HIT)
+- Transfer-Encoding: chunked 分块传输
+- 空行作为头和体的分隔符

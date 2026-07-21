@@ -1,0 +1,17 @@
+id: sql-injection-basic
+title: SQL 注入手工入门（示例）
+covers: [sqli-manual, sqli-principle, sqli-types]
+optional: true
+objective:
+  - 理解数据如何变成可执行 SQL 片段
+  - 手工证明至少一类注入
+  - 口述参数化如何防御
+environment_requirements:
+  - 本地或授权靶场
+  - 存在拼进查询的用户输入
+acceptance:
+  - 指出注入点与类型直觉
+  - 用现象证明注入成立（非只贴 payload）
+  - 说明参数化/绑定查询如何挡住
+  - （迁移）换参数名或另一练习页再验证一次
+notes: 镜像可替换；目标与验收不变。

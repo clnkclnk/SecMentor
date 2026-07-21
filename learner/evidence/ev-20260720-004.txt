@@ -1,0 +1,17 @@
+P3.2 web-request-response 验收证据
+
+验收方式：F12 网络面板观察 + 口头答题
+
+学员观察结果：
+1. 百度首页 HTML 请求状态码：200 OK
+2. 一个百度首页共发出 78 个请求
+3. 请求头中观察到：Accept, Accept-Encoding, Accept-Language, Cache-Control, Connection 等浏览器自动附加的头
+
+验收题回答：
+Q: 为什么同一个网站的不同资源每次请求都带上了同样的 Cookie？
+A: "带上cookie才能认识你，知道你是谁"
+
+评估：理解正确 ✅ Cookie = 浏览器自动携带的身份凭证，同一域名所有请求自动附加。
+
+完成时间：2026-07-20 21:54
+独立性：guided

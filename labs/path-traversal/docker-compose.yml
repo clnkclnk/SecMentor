@@ -1,0 +1,6 @@
+services:
+  # 经典学习向脆弱 Web（含多类入门漏洞，本 lab 只做文件/路径相关任务）
+  dvwa:
+    image: vulnerables/web-dvwa
+    ports:
+      - "127.0.0.1:18081:80"
