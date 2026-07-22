@@ -35,7 +35,7 @@
     "still_fuzzy": []
   },
   "current_stage": "P3",
-  "current_topic": "web-auth-state",
+  "current_topic": "web-browser-tools",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -70,8 +70,8 @@
         "web-http": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-003"], "started_at": "2026-07-20T20:22:00+08:00", "completed_at": "2026-07-20T21:34:00+08:00" },
         "web-request-response": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-004"], "started_at": "2026-07-20T21:34:00+08:00", "completed_at": "2026-07-20T21:54:00+08:00" },
         "web-auth-state": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-005"], "started_at": "2026-07-20T21:54:00+08:00", "completed_at": "2026-07-20T22:37:00+08:00" },
-        "web-client-server": { "status": "available", "mastery": "none", "evidence_ids": [] },
-        "web-proxy-intro": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "web-client-server": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260722-001"], "started_at": "2026-07-21T21:20:00+08:00", "completed_at": "2026-07-22T17:00:00+08:00" },
+        "web-proxy-intro": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260722-002"], "started_at": "2026-07-22T17:05:00+08:00", "completed_at": "2026-07-22T18:47:00+08:00" },
         "web-browser-tools": { "status": "available", "mastery": "none", "evidence_ids": [] },
         "web-devtools": { "status": "available", "mastery": "none", "evidence_ids": [] },
         "web-https-tls": { "status": "available", "mastery": "none", "evidence_ids": [] }
@@ -85,7 +85,7 @@
     "webapp": 3,
     "prog": 1,
     "sec": 2.5,
-    "tooling": 2.5
+    "tooling": 3.5
   },
   "preferences": {
     "language": "zh-CN",
@@ -93,13 +93,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 2,
-    "last_study_date": "2026-07-20"
+    "days": 3,
+    "last_study_date": "2026-07-22"
   },
   "motivation": {
-    "points_total": 270,
-    "points_today": 125,
-    "points_today_date": "2026-07-20",
+    "points_total": 320,
+    "points_today": 50,
+    "points_today_date": "2026-07-22",
     "level": 4,
     "title": "名动一方",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4"],
@@ -108,6 +108,16 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-22T18:47:00+08:00",
+      "summary": "P3 burp-intro passed。学员安装Burp Suite CE，用Open browser启动代理浏览器，成功拦截B站HTTP请求并在Intercept面板修改Referer字段后Forward放行。理解中间人代理原理。+25分，总分320。"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-22T17:00:00+08:00",
+      "summary": "P3 web-client-server passed。学员理解客户端-服务端三层模型，掌握完整登录请求链路(POST Body→302→Set-Cookie)。+25分，总分295，连续学习3天。"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-20T21:54:00+08:00",
@@ -139,5 +149,5 @@
       "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
     }
   ],
-  "updated_at": "2026-07-20T21:54:00+08:00"
+  "updated_at": "2026-07-22T18:47:00+08:00"
 }
