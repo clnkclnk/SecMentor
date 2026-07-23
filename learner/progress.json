@@ -34,8 +34,8 @@
     "skipped_topics": [],
     "still_fuzzy": []
   },
-  "current_stage": "P3",
-  "current_topic": "web-browser-tools",
+  "current_stage": "P4",
+  "current_topic": "xss-fundamentals",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -64,27 +64,35 @@
         "lab-vm": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-002"], "started_at": "2026-07-20T19:28:00+08:00", "completed_at": "2026-07-20T20:22:00+08:00" }
       }
     },
-    "P3": {
+    "P4": {
       "status": "in_progress",
+      "started_at": "2026-07-23T17:00:00+08:00",
+      "topics": {
+        "xss-fundamentals": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-003"], "started_at": "2026-07-23T17:00:00+08:00", "completed_at": "2026-07-23T18:21:00+08:00" }
+      }
+    },
+    "P3": {
+      "status": "completed",
+      "completed_at": "2026-07-23T16:33:00+08:00",
       "topics": {
         "web-http": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-003"], "started_at": "2026-07-20T20:22:00+08:00", "completed_at": "2026-07-20T21:34:00+08:00" },
         "web-request-response": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-004"], "started_at": "2026-07-20T21:34:00+08:00", "completed_at": "2026-07-20T21:54:00+08:00" },
         "web-auth-state": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-005"], "started_at": "2026-07-20T21:54:00+08:00", "completed_at": "2026-07-20T22:37:00+08:00" },
         "web-client-server": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260722-001"], "started_at": "2026-07-21T21:20:00+08:00", "completed_at": "2026-07-22T17:00:00+08:00" },
         "web-proxy-intro": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260722-002"], "started_at": "2026-07-22T17:05:00+08:00", "completed_at": "2026-07-22T18:47:00+08:00" },
-        "web-browser-tools": { "status": "available", "mastery": "none", "evidence_ids": [] },
-        "web-devtools": { "status": "available", "mastery": "none", "evidence_ids": [] },
-        "web-https-tls": { "status": "available", "mastery": "none", "evidence_ids": [] }
+        "web-browser-tools": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-002"], "started_at": "2026-07-23T15:40:00+08:00", "completed_at": "2026-07-23T16:33:00+08:00" },
+        "web-devtools": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-002"], "started_at": "2026-07-23T15:40:00+08:00", "completed_at": "2026-07-23T16:33:00+08:00" },
+        "web-https-tls": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-001"], "started_at": "2026-07-22T19:00:00+08:00", "completed_at": "2026-07-23T15:33:00+08:00" }
       }
     }
   },
   "skills_radar": {
     "net": 3,
     "linux": 3.5,
-    "http": 4,
-    "webapp": 3,
+    "http": 4.5,
+    "webapp": 3.5,
     "prog": 1,
-    "sec": 2.5,
+    "sec": 4,
     "tooling": 3.5
   },
   "preferences": {
@@ -93,21 +101,44 @@
     "celebrations": true
   },
   "streak": {
-    "days": 3,
-    "last_study_date": "2026-07-22"
+    "days": 4,
+    "last_study_date": "2026-07-23"
   },
   "motivation": {
-    "points_total": 320,
-    "points_today": 50,
-    "points_today_date": "2026-07-22",
-    "level": 4,
-    "title": "名动一方",
-    "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4"],
-    "last_encouragement_at": "2026-07-20T21:54:00+08:00",
-    "pending_celebration": null
+    "points_total": 395,
+    "points_today": 75,
+    "points_today_date": "2026-07-23",
+    "level": 5,
+    "title": "威震江湖",
+    "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
+    "last_encouragement_at": "2026-07-23T16:33:00+08:00",
+    "pending_celebration": {
+      "kind": "level_up",
+      "title": "升级！威震江湖 + P3通关庆典",
+      "points_delta": 50,
+      "points_total": 370,
+      "message": "P3 全部通关！从HTTP报文到Burp抓包到TLS证书，Web前置基础全部掌握。你已从「名动一方」晋升「威震江湖」。进入 P4 漏洞实战阶段！"
+    }
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-23T18:21:00+08:00",
+      "summary": "P4 xss-fundamentals passed。学员完成XSS靶场4关实验（反射型/存储型/DOM型/Cookie窃取），掌握<script>alert(1)>和<img onerror> payload，理解转义+CSP+HttpOnly三层防御。+25分，总分395，连续学习5天。"
+    },
+    {
+      "type": "stage_completed",
+      "ts": "2026-07-23T16:33:00+08:00",
+      "summary": "P3 Web 前置基础阶段全部通关！7/7 课题 passed（HTTP报文/请求链/Cookie-Session/客户端服务端/Burp抓包/浏览器工具/HTTPS-TLS）。从零基础到能独立使用Burp拦截修改请求、查看TLS证书、理解HttpOnly。总分370，连续学习4天。进入 P4 Web安全漏洞实战阶段。"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-23T16:33:00+08:00",
+      "summary": "P3 web-browser-tools passed。学员熟练使用F12开发者工具：Network抓包/Application-Cookie/Console执行document.cookie验证HttpOnly。+25分。"
+    },
+      "summary": "P3 web-https-tls passed。学员在Burp内置浏览器查看bilibili.com证书，确认颁发者为PortSwigger CA（非正规CA），亲手验证中间人证书欺骗原理。+25分，总分345，连续学习4天。"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-22T18:47:00+08:00",
@@ -149,5 +180,5 @@
       "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
     }
   ],
-  "updated_at": "2026-07-22T18:47:00+08:00"
+  "updated_at": "2026-07-23T18:21:00+08:00"
 }

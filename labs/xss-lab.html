@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS 练习靶场</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, "Microsoft YaHei", sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            color: #58a6ff;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .warning {
+            background: #1c1c1c;
+            border: 1px solid #f85149;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #f85149;
+        }
+        .level-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .level-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        .level-badge {
+            background: #238636;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .level-desc {
+            color: #8b949e;
+            font-size: 13px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        input[type="text"] {
+            flex: 1;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 10px 14px;
+            color: #c9d1d9;
+            font-size: 14px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #58a6ff;
+        }
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        button:hover { background: #2ea043; }
+        .output-area {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 14px;
+            min-height: 60px;
+            font-size: 14px;
+        }
+        .output-label {
+            color: #8b949e;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        .output-content { color: #7ee787; word-break: break-all; }
+        /* Level 3 特殊样式：搜索结果 */
+        .search-result {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .hint {
+            display: none;
+            background: #1c1c1c;
+            border-left: 3px solid #58a6ff;
+            padding: 10px 14px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #8b949e;
+            border-radius: 0 6px 6px 0;
+        }
+        .hint-btn {
+            background: transparent;
+            color: #58a6ff;
+            border: 1px solid #58a6ff;
+            padding: 4px 12px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        .hint-btn:hover { background: rgba(88,166,255,0.1); }
+        .success-banner {
+            display: none;
+            background: linear-gradient(135deg, #238636, #2ea043);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-weight: 600;
+            animation: pulse 0.5s ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>XSS Labs</h1>
+    <p class="subtitle">SecMentor P4.1 实验靶场 — 在这里练习跨站脚本攻击</p>
+
+    <div class="warning">
+        <strong>安全提示：</strong>这个页面是故意留有漏洞的练习靶场，仅供学习使用。
+        永远不要对真实网站进行未经授权的攻击测试。
+    </div>
+
+    <!-- ========== 关卡 1：反射型 XSS ========== -->
+    <div class="level-card" id="level1">
+        <div class="level-header">
+            <span class="level-title">Level 1：反射型 XSS</span>
+            <span class="level-badge">入门</span>
+        </div>
+        <div class="level-desc">
+            网站会把你的搜索词显示在页面上。<br>
+            <strong>目标：</strong>让页面弹出一个对话框，内容为 <code>1</code>。
+        </div>
+        <div class="input-group">
+            <input type="text" id="l1-input" placeholder="输入搜索内容...">
+            <button onclick="doLevel1()">搜索</button>
+        </div>
+        <div class="output-area">
+            <div class="output-label">搜索结果：</div>
+            <div class="output-content" id="l1-output">等待输入...</div>
+        </div>
+        <div class="success-banner" id="l1-success">关卡通过！你成功触发了反射型 XSS</div>
+        <button class="hint-btn" onclick="toggleHint('h1')">查看提示</button>
+        <div class="hint" id="h1">
+            提示：HTML 中 &lt;script&gt; 标签会被浏览器执行。<br>
+            试试输入：<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>
+        </div>
+    </div>
+
+    <!-- ========== 关卡 2：存储型 XSS ========== -->
+    <div class="level-card" id="level2">
+        <div class="level-header">
+            <span class="level-title">Level 2：存储型 XSS（评论区）</span>
+            <span class="level-badge">进阶</span>
+        </div>
+        <div class="level-desc">
+            这是一个评论区，你的评论会"保存"并显示给所有人。<br>
+            <strong>目标：</strong>发表一条评论，让看到这条评论的人弹出对话框。
+        </div>
+        <div class="input-group">
+            <input type="text" id="l2-name" placeholder="你的昵称">
+            <input type="text" id="l2-comment" placeholder="输入评论内容...">
+            <button onclick="doLevel2()">发表评论</button>
+        </div>
+        <div class="output-area" style="min-height: 80px;">
+            <div class="output-label">评论区：</div>
+            <div id="l2-output"><em style="color:#484f58">暂无评论</em></div>
+        </div>
+        <div class="success-banner" id="l2-success">关卡通过！你成功触发了存储型 XSS</div>
+        <button class="hint-btn" onclick="toggleHint('h2')">查看提示</button>
+        <div class="hint" id="h2">
+            提示：和 Level 1 类似，但这次你的恶意代码会"存"在评论区里。<br>
+            每次有人刷新页面都会触发！<br>
+            试试在评论框输入：<code>&lt;script&gt;alert('存储型XSS')&lt;/script&gt;</code>
+        </div>
+    </div>
+
+    <!-- ========== 关卡 3：DOM 型 XSS ========== -->
+    <div class="level-card" id="level3">
+        <div class="level-header">
+            <span class="level-title">Level 3：DOM 型 XSS</span>
+            <span class="level-badge">困难</span>
+        </div>
+        <div class="level-desc">
+            这个页面用 JavaScript 动态生成内容（不经过服务器）。<br>
+            <strong>目标：</strong>点击链接后弹出对话框。
+        </div>
+        <div class="input-group">
+            <input type="text" id="l3-input" placeholder="点击下面的链接后，URL 后面的内容会显示在这里...">
+            <button onclick="doLevel3()">跳转</button>
+        </div>
+        <div class="search-result" id="l3-output">
+            你搜索的内容：<span id="l3-display"></span>
+        </div>
+        <p style="margin-top:10px;color:#8b949e;font-size:13px;">
+            或者直接点击这个链接试试：
+            <a href="#" id="l3-link" onclick="handleLink();return false;" style="color:#58a6ff;">#?q=测试关键词</a>
+        </p>
+        <div class="success-banner" id="l3-success">关卡通过！你成功触发了 DOM 型 XSS</div>
+        <button class="hint-btn" onclick="toggleHint('h3')">查看提示</button>
+        <div class="hint" id="h3">
+            提示：这次漏洞在前端 JS 代码里，不是服务器返回的 HTML。<br>
+            URL 里的内容被 innerHTML 直接插入了页面。<br>
+            试试把链接改成：<code>#?q=&lt;img src=x onerror=alert(1)&gt;</code><br>
+            （注意：innerHTML 对 &lt;script&gt; 的处理比较特殊，有时需要用 img 标签绕过）
+        </div>
+    </div>
+
+    <!-- ========== 关卡 4：Cookie 窃取演示 ========== -->
+    <div class="level-card" id="level4">
+        <div class="level-header">
+            <span class="level-title">Level 4：Cookie 窃取原理</span>
+            <span class="level-badge">理解</span>
+        </div>
+        <div class="level-desc">
+            模拟 XSS 攻击者如何窃取 Cookie。<br>
+            <strong>目标：</strong>执行代码后，在下方的"黑客日志"中看到 Cookie 内容。
+        </div>
+        <div class="input-group">
+            <input type="text" id="l4-input" placeholder="输入 'steal' 来模拟窃取操作...">
+            <button onclick="doLevel4()">提交</button>
+        </div>
+        <div class="output-area">
+            <div class="output-label">页面输出：</div>
+            <div class="output-content" id="l4-output">等待输入...</div>
+        </div>
+        <div class="output-area" style="margin-top:10px;border-color:#f85149;">
+            <div class="output-label" style="color:#f85149;">黑客服务器日志（evil.com）：</div>
+            <div id="l4-log" style="color:#f85149;font-family:monospace;">等待窃取...</div>
+        </div>
+        <div class="success-banner" id="l4-success">关卡通过！你看到了 Cookie 是如何被偷走的</div>
+        <button class="hint-btn" onclick="toggleHint('h4')">查看提示</button>
+        <div class="hint" id="h4">
+            提示：输入 <code>&lt;script&gt;stealCookie()&lt;/script&gt;</code><br>
+            这会调用一个预设的"窃取函数"，模拟把 Cookie 发到黑客服务器。<br>
+            观察下方日志区域的变化 —— 这就是 XSS 窃取 Cookie 的过程。
+        </div>
+    </div>
+</div>
+
+<script>
+// ====== 全局：模拟设置一个 Cookie ======
+document.cookie = "session_id=SECMENTOR_USER_2026; path=/";
+document.cookie = "user_level=P4_XSS_LEARNER; path=/";
+
+// ====== 黑客日志记录器（模拟 evil.com） ======
+window.hackerLog = [];
+
+function logToHacker(data) {
+    var entry = "[" + new Date().toLocaleTimeString() + "] " + data;
+    window.hackerLog.push(entry);
+    var logEl = document.getElementById("l4-log");
+    if (logEl) logEl.innerHTML = window.hackerLog.join("<br>");
+}
+
+// ====== Level 1：反射型 XSS ======
+function doLevel1() {
+    var input = document.getElementById("l1-input").value;
+    // 漏洞点：直接将用户输入插入 HTML，没有过滤！
+    document.getElementById("l1-output").innerHTML = "你搜索的是：" + input;
+
+    // 检测是否触发了 alert（通过监听方式）
+    setTimeout(function() {
+        // 如果用户输入了 script 标签，它已经被执行了
+        if (input.toLowerCase().includes("<script") || input.toLowerCase().includes("alert")) {
+            document.getElementById("l1-success").style.display = "block";
+        }
+    }, 500);
+}
+
+// ====== Level 2：存储型 XSS ======
+function doLevel2() {
+    var name = document.getElementById("l2-name").value || "匿名用户";
+    var comment = document.getElementById("l2-comment").value;
+    // 漏洞点：评论内容直接插入 HTML，没有过滤！
+    var output = document.getElementById("l2-output");
+    output.innerHTML += '<div style="border-top:1px solid #30363d;padding:10px 0;margin-top:8px;">'
+        + '<strong>' + name + '：</strong>'
+        + comment + '</div>';
+
+    if (comment.toLowerCase().includes("<script") || comment.toLowerCase().includes("alert") || comment.toLowerCase().includes("onerror")) {
+        document.getElementById("l2-success").style.display = "block";
+    }
+}
+
+// ====== Level 3：DOM 型 XSS ======
+function handleLink() {
+    var q = "#?q=<img src=x onerror=alert('DOM型XSS')>";
+    document.getElementById("l3-link").href = "#" + encodeURIComponent(q.substring(2));
+    doLevel3FromHash();
+}
+
+function doLevel3() {
+    var input = document.getElementById("l3-input").value;
+    renderLevel3(input);
+}
+
+function doLevel3FromHash() {
+    // 从 URL hash 获取参数（模拟真实场景）
+    var hash = location.hash.substring(1);
+    var params = new URLSearchParams(hash);
+    var q = params.get("q") || "默认内容";
+    renderLevel3(q);
+}
+
+function renderLevel3(content) {
+    // 漏洞点：使用 innerHTML 直接插入用户可控的内容
+    document.getElementById("l3-display").innerHTML = content;
+    // 检测是否触发了 XSS
+    if (content.toLowerCase().includes("<script") || content.toLowerCase().includes("onerror") || content.toLowerCase().includes("onclick") || content.toLowerCase().includes("onload")) {
+        document.getElementById("l3-success").style.display = "block";
+    }
+}
+
+// ====== Level 4：Cookie 窃取演示 ======
+function stealCookie() {
+    var cookies = document.cookie;
+    // 模拟发送到黑客服务器
+    logToHacker("[窃取] 收到 Cookie: " + cookies);
+    logToHacker("[分析] session_id = SECMENTOR_USER_2026");
+    logToHacker("[分析] user_level = P4_XSS_LEARNER");
+    logToHacker("[警告] 黑客现在可以用这些 Cookie 冒充你登录！");
+    return cookies;
+}
+
+function doLevel4() {
+    var input = document.getElementById("l4-input").value;
+    // 漏洞点：直接执行用户输入的代码
+    document.getElementById("l4-output").innerHTML = "你输入的内容：" + input;
+    // 检测是否触发了窃取
+    if (input.toLowerCase().includes("stealcookie") || input.toLowerCase().includes("<script")) {
+        setTimeout(function() {
+            document.getElementById("l4-success").style.display = "block";
+        }, 500);
+    }
+}
+
+// ====== 工具函数 ======
+function toggleHint(id) {
+    var el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
+}
+</script>
+</body>
+</html>
