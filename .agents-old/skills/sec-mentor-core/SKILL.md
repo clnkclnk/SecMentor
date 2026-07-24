@@ -47,14 +47,6 @@ description: >-
 实验：lab-strategy——**目标固定、环境动态**；`labs/` 非硬依赖。  
 领域：path-planning——**Agent 自主规划**；YAML 非天花板。
 
-## 阶段顺序（引导）
-
-默认按 curriculum 的 stage 顺序教：当前 stage 的 required topic 稳了再进下一 stage。跨 stage 前看一眼当前 stage 还有没有 required 没过（如 XSS 属 P7，P3 没清时不宜提前）。`planned_topics` 登记的自定义 topic 不受此限。
-
-## 收尾
-
-当日 session 结束前走一遍 `sec-mentor-review`：写 `learner/journal/YYYY-MM-DD.md` + 追加 `daily_review` 事件 + 推 `recent_events` + 更新 `still_fuzzy`。这样新 session 才能续上「今天卡哪、什么还模糊」，而不只看到通过流水。
-
 ## Examples
 
 摸底后（P0 未完成时）正确片段：

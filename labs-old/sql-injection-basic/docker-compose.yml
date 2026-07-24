@@ -1,0 +1,6 @@
+services:
+  # 与 path-traversal 同镜像族；本 lab 只做 SQL Injection 练习页
+  dvwa:
+    image: vulnerables/web-dvwa
+    ports:
+      - "127.0.0.1:18082:80"

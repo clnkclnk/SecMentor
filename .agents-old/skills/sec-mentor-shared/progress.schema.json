@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://secmentor.local/progress.schema.json",
+  "title": "SecMentorLearnerProgress",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "learner",
+    "placement",
+    "path",
+    "current_stage",
+    "stages",
+    "updated_at"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.1" },
+    "learner": {
+      "type": "object",
+      "required": ["display_name"],
+      "properties": {
+        "display_name": { "type": "string" },
+        "timezone": { "type": "string" },
+        "os": { "type": "string" },
+        "weekly_hours": { "type": "number" }
+      }
+    },
+    "placement": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["not_started", "in_progress", "done"]
+        },
+        "completed_at": { "type": ["string", "null"] },
+        "profile": { "type": "object" },
+        "scores": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          }
+        },
+        "summary": { "type": "string" },
+        "recommended_start_after_p0": { "type": ["string", "null"] },
+        "previous": { "type": "object" }
+      }
+    },
+    "path": {
+      "type": "object",
+      "required": ["track", "mode"],
+      "properties": {
+        "track": {
+          "type": "string",
+          "enum": ["web-security", "cyber-fundamentals"]
+        },
+        "mode": { "type": "string", "enum": ["steady", "lab-first"] },
+        "persona": {
+          "type": "string",
+          "enum": ["beginner", "practitioner", "hunter"],
+          "description": "决定问答密度；hunter=任务驱动少口试"
+        },
+        "domain": {
+          "type": "string",
+          "description": "学员点名领域，如 cloud-security；由 Agent 规划，不依赖预置全课表"
+        },
+        "domain_goal": { "type": "string" },
+        "planned_topics": {
+          "type": "array",
+          "description": "Agent 自主规划的主题节点",
+          "items": { "type": "object" }
+        },
+        "reading_list": {
+          "type": "array",
+          "description": "推荐博客/文档",
+          "items": { "type": "object" }
+        },
+        "focus_next_week": { "type": "array", "items": { "type": "string" } },
+        "skipped_topics": { "type": "array", "items": { "type": "string" } },
+        "still_fuzzy": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "topic_id 列表：昨日复盘仍模糊，优先重练"
+        }
+      }
+    },
+    "current_stage": { "type": "string" },
+    "current_topic": { "type": ["string", "null"] },
+    "active_failure": {
+      "type": ["object", "null"],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "concept_gap",
+            "tooling_failure",
+            "environment_failure",
+            "careless_error",
+            "instruction_misunderstanding",
+            "over_assisted"
+          ]
+        },
+        "code": { "type": "string" },
+        "attempt": { "type": "integer", "minimum": 1 },
+        "remediation_topics": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "resume_topic": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "stages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["locked", "available", "in_progress", "done"]
+          },
+          "topics": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "locked",
+                    "available",
+                    "in_progress",
+                    "partial",
+                    "passed",
+                    "failed",
+                    "skipped",
+                    "deferred",
+                    "waived"
+                  ]
+                },
+                "mastery": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "recall",
+                    "understand",
+                    "apply",
+                    "transfer"
+                  ]
+                },
+                "fail_count": { "type": "integer", "minimum": 0 },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "passed_at": { "type": ["string", "null"] },
+                "notes": { "type": "string" },
+                "micro": {
+                  "type": "boolean",
+                  "description": "本次只做了 topic 的微切片，未完整验收"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "skills_radar": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 3 }
+    },
+    "preferences": { "type": "object" },
+    "streak": {
+      "type": "object",
+      "properties": {
+        "days": { "type": "integer", "minimum": 0 },
+        "last_study_date": { "type": ["string", "null"] }
+      }
+    },
+    "motivation": {
+      "type": "object",
+      "description": "积分与里程碑；规则见 motivation.md",
+      "properties": {
+        "points_total": { "type": "integer", "minimum": 0 },
+        "points_today": { "type": "integer", "minimum": 0 },
+        "points_today_date": { "type": ["string", "null"] },
+        "level": { "type": "integer", "minimum": 1 },
+        "title": { "type": "string" },
+        "milestones_unlocked": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "last_encouragement_at": { "type": ["string", "null"] },
+        "pending_celebration": {
+          "type": ["object", "null"],
+          "properties": {
+            "kind": { "type": "string" },
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "points_delta": { "type": "integer" },
+            "points_total": { "type": "integer" },
+            "message": { "type": "string" }
+          }
+        }
+      }
+    },
+    "last_weekly_review": { "type": ["string", "null"] },
+    "recent_events": {
+      "type": "array",
+      "description": "最近少量事件摘要；完整事件在 learner/events/*.jsonl",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["type", "at"],
+        "properties": {
+          "type": { "type": "string" },
+          "at": { "type": "string" },
+          "summary": { "type": "string" },
+          "topics_touched": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "minutes": { "type": "number" }
+        }
+      }
+    },
+    "updated_at": { "type": "string" }
+  },
+  "additionalProperties": true
+}

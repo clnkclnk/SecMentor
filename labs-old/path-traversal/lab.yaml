@@ -1,0 +1,18 @@
+id: path-traversal
+title: 路径/文件读取入门（示例）
+covers: [file-download, file-include, path-traversal]
+optional: true
+objective:
+  - 理解用户输入如何参与文件路径构造
+  - 观察正常路径与异常路径差异
+  - 能解释目录边界为何被突破
+environment_requirements:
+  - 本地或授权靶场
+  - 存在用户可控文件路径参数
+  - 能观察请求与结果
+acceptance:
+  - 指出用户可控输入
+  - 解释正常与异常路径区别
+  - 提出至少一种修复方式
+  - （迁移）在变体参数或另一环境再次完成分析
+notes: DVWA 等仅为候选实现，可替换。

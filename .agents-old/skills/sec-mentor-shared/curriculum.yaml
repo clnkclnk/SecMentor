@@ -1,0 +1,462 @@
+# SecMentor 课程真相源（Agent 以本文件为准；curriculum-map.md 仅为导读）
+# 实验环境：勿在此绑定固定 lab；见 lab-strategy.md。labs/ 仅为示例库。
+schema_version: "1.1"
+tracks:
+  web-security: 通向 Web 安全实战
+  cyber-fundamentals: 延长基础，推迟漏洞专题
+
+stage_order: [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10]
+
+stages:
+  P0: { title: 学习契约与安全边界, kind: required }
+  P1: { title: 网络与计算机基础, kind: conditional }
+  P2: { title: Linux 与工作环境, kind: conditional }
+  P3: { title: Web 前置基础, kind: core }
+  P4: { title: 认证与爆破（实验室）, kind: core }
+  P5: { title: 文件类漏洞, kind: core }
+  P6: { title: SQL 注入, kind: core }
+  P7: { title: XSS / CSRF, kind: core }
+  P8: { title: 服务端进阶漏洞, kind: advanced }
+  P9: { title: 中间件与数据库, kind: advanced }
+  P10: { title: 方法论与综合, kind: capstone }
+
+# 每阶段一个纵向小项目（产物写入 learner/evidence 或 journal）
+vertical_projects:
+  P3:
+    id: vp-login-request
+    title: 观察并解释一次完整登录请求
+    deliverables: [请求导出或手抄报文, 流程图短述, 实验记录]
+  P4:
+    id: vp-auth-lab
+    title: 在靶场完成一类弱认证验证并说明锁定风险
+    deliverables: [实验记录, 风险说明]
+  P5:
+    id: vp-upload-chain
+    title: 画出上传校验链并在靶场复现一类绕过思维（合法环境）
+    deliverables: [校验链图, 实验记录]
+  P6:
+    id: vp-sqli-fix
+    title: 从请求推导注入点、手工验证、口述参数化修复
+    deliverables: [请求笔记, 验证步骤, 修复要点]
+  P7:
+    id: vp-xss-context
+    title: 区分上下文并完成一关 XSS，说明编码防御
+    deliverables: [上下文说明, 实验记录]
+  P8:
+    id: vp-ssrf-or-rce
+    title: 任选 SSRF 或命令执行完成一条实验室验证链
+    deliverables: [触发点分析, 实验记录]
+  P10:
+    id: vp-capstone
+    title: 综合靶场简报
+    deliverables: [检查清单, 简报]
+
+topics:
+  ethics-scope:
+    stage: P0
+    required: true
+    title: 授权、法律与练习边界
+    prerequisites: []
+    outcomes:
+      - { id: scope-rules, level: understand }
+    remediation: {}
+
+  learning-loop:
+    stage: P0
+    required: true
+    title: 如何用 Agent 学习
+    prerequisites: [ethics-scope]
+    outcomes:
+      - { id: daily-loop, level: apply }
+    remediation: {}
+
+  net-ip-port:
+    stage: P1
+    required: true
+    title: IP、端口、DNS 直觉
+    prerequisites: [learning-loop]
+    outcomes:
+      - { id: browse-path, level: apply }
+    remediation:
+      host_port_confusion: [net-ip-port]
+
+  net-tcp-http:
+    stage: P1
+    required: true
+    title: TCP 与应用层关系
+    prerequisites: [net-ip-port]
+    outcomes:
+      - { id: port-vs-app, level: understand }
+    remediation:
+      open_port_means_website: [net-ip-port, net-tcp-http]
+
+  os-process-file:
+    stage: P1
+    required: false
+    title: 进程/文件/权限概念
+    prerequisites: [learning-loop]
+    outcomes:
+      - { id: perm-basics, level: understand }
+
+  linux-shell:
+    stage: P2
+    required: true
+    title: 终端、路径、读写权限
+    prerequisites: [learning-loop]
+    outcomes:
+      - { id: shell-nav, level: apply }
+    remediation:
+      path_permission: [linux-shell]
+
+  linux-process-net:
+    stage: P2
+    required: false
+    title: 进程与基础网络命令
+    prerequisites: [linux-shell]
+    outcomes:
+      - { id: curl-ss, level: apply }
+
+  lab-vm:
+    stage: P2
+    required: true
+    title: Docker/VM 实验室
+    prerequisites: [learning-loop]
+    outcomes:
+      - { id: run-one-lab, level: apply }
+    remediation:
+      docker_not_running: [lab-vm]
+
+  pentest-overview:
+    stage: P3
+    required: true
+    title: 渗透测试概述与术语
+    prerequisites: [learning-loop]
+    outcomes:
+      - { id: phases-terms, level: understand }
+
+  http-basics:
+    stage: P3
+    required: true
+    require_transfer: true
+    title: HTTP 协议与报文
+    prerequisites: [pentest-overview]
+    outcomes:
+      - { id: parse-request, level: apply }
+      - { id: explain-response, level: understand }
+    remediation:
+      cannot_read_request: [http-basics]
+      status_code_guessing: [http-basics]
+
+  url-encoding:
+    stage: P3
+    required: true
+    title: URL 与编码
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: why-encode, level: understand }
+    remediation:
+      encoding_blind: [http-basics, url-encoding]
+
+  cookie-session:
+    stage: P3
+    required: true
+    title: Cookie / Session
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: auth-state, level: apply }
+    remediation:
+      auth_state_confusion: [http-basics, browser-devtools, cookie-session]
+
+  browser-devtools:
+    stage: P3
+    required: true
+    title: 浏览器与开发者工具
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: network-panel, level: apply }
+
+  burp-intro:
+    stage: P3
+    required: true
+    title: 代理抓包入门
+    prerequisites: [browser-devtools, lab-vm]
+    outcomes:
+      - { id: intercept-modify, level: apply }
+    remediation:
+      no_proxy_traffic: [browser-devtools, burp-intro]
+
+  info-gather-web:
+    stage: P3
+    required: true
+    title: Web 信息收集（公开/靶场）
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: passive-recon, level: apply }
+
+  nmap-intro:
+    stage: P3
+    required: false
+    title: 端口扫描概念
+    prerequisites: [net-ip-port, lab-vm]
+    outcomes:
+      - { id: scan-lab-only, level: understand }
+
+  auth-basics:
+    stage: P4
+    required: true
+    title: 认证方式概念
+    prerequisites: [cookie-session]
+    outcomes:
+      - { id: auth-types, level: understand }
+
+  brute-logic:
+    stage: P4
+    required: true
+    title: 爆破逻辑与风险
+    prerequisites: [auth-basics, burp-intro]
+    outcomes:
+      - { id: brute-risk, level: understand }
+
+  burp-intruder:
+    stage: P4
+    required: true
+    title: 爆破/Fuzz 思维
+    prerequisites: [brute-logic]
+    outcomes:
+      - { id: fuzz-modes, level: understand }
+
+  weak-auth-labs:
+    stage: P4
+    required: true
+    title: 弱口令等靶场
+    prerequisites: [burp-intruder]
+    outcomes:
+      - { id: weak-auth-lab, level: apply }
+
+  unauth-concept:
+    stage: P4
+    required: false
+    title: 未授权访问概念
+    prerequisites: [auth-basics]
+    outcomes:
+      - { id: missing-auth, level: understand }
+
+  upload-basics:
+    stage: P5
+    required: true
+    title: 文件上传成因与危害
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: upload-chain, level: understand }
+
+  upload-labs:
+    stage: P5
+    required: true
+    title: 上传靶场练习
+    prerequisites: [upload-basics, burp-intro]
+    outcomes:
+      - { id: upload-lab, level: apply }
+
+  file-download:
+    stage: P5
+    required: true
+    require_transfer: false
+    title: 任意文件下载
+    prerequisites: [http-basics, url-encoding]
+    outcomes:
+      - { id: path-traversal, level: apply }
+    remediation:
+      path_concat: [url-encoding, file-download]
+
+  file-include:
+    stage: P5
+    required: true
+    title: 文件包含
+    prerequisites: [file-download]
+    outcomes:
+      - { id: lfi-basics, level: apply }
+
+  php-wrappers:
+    stage: P5
+    required: false
+    title: PHP 伪协议入门
+    prerequisites: [file-include]
+    outcomes:
+      - { id: wrappers, level: understand }
+
+  sql-syntax:
+    stage: P6
+    required: true
+    title: SQL 基础（够用）
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: select-where, level: apply }
+    remediation:
+      sql_syntax_gap: [sql-syntax]
+
+  sqli-principle:
+    stage: P6
+    required: true
+    title: 注入原理
+    prerequisites: [sql-syntax]
+    outcomes:
+      - { id: data-to-code, level: understand }
+
+  sqli-types:
+    stage: P6
+    required: true
+    title: 注入类型
+    prerequisites: [sqli-principle]
+    outcomes:
+      - { id: sqli-types, level: understand }
+
+  sqli-manual:
+    stage: P6
+    required: true
+    require_transfer: true
+    title: 手工注入练习
+    prerequisites: [sqli-types, burp-intro]
+    outcomes:
+      - { id: manual-sqli, level: apply }
+    remediation:
+      injection_not_found: [sql-syntax, sqli-principle, http-basics]
+      filter_confusion: [url-encoding, sqli-manual]
+
+  sqli-tools:
+    stage: P6
+    required: false
+    title: sqlmap 等工具
+    prerequisites: [sqli-manual]
+    outcomes:
+      - { id: tool-after-manual, level: apply }
+
+  sqli-bypass-intro:
+    stage: P6
+    required: false
+    title: 过滤与绕过思维
+    prerequisites: [sqli-manual]
+    outcomes:
+      - { id: bypass-thinking, level: understand }
+
+  xss-types:
+    stage: P7
+    required: true
+    title: XSS 类型与危害
+    prerequisites: [http-basics, browser-devtools]
+    outcomes:
+      - { id: xss-kinds, level: understand }
+    remediation:
+      context_encoding: [browser-devtools, xss-types]
+
+  xss-labs:
+    stage: P7
+    required: true
+    title: XSS 靶场
+    prerequisites: [xss-types]
+    outcomes:
+      - { id: xss-lab, level: apply }
+
+  csrf-principle:
+    stage: P7
+    required: true
+    title: CSRF 原理与防御
+    prerequisites: [cookie-session]
+    outcomes:
+      - { id: csrf-defense, level: understand }
+
+  csrf-lab:
+    stage: P7
+    required: false
+    title: CSRF 实验
+    prerequisites: [csrf-principle]
+    outcomes:
+      - { id: csrf-lab, level: apply }
+
+  xxe-basics:
+    stage: P8
+    required: true
+    title: XXE 基础
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: xxe-lab, level: apply }
+
+  ssrf-basics:
+    stage: P8
+    required: true
+    title: SSRF 基础
+    prerequisites: [http-basics, net-ip-port]
+    outcomes:
+      - { id: ssrf-lab, level: apply }
+
+  deser-intro:
+    stage: P8
+    required: false
+    title: 反序列化入门
+    prerequisites: [http-basics]
+    outcomes:
+      - { id: deser-model, level: understand }
+
+  rce-cmd:
+    stage: P8
+    required: true
+    title: 命令/代码执行
+    prerequisites: [linux-shell, http-basics]
+    outcomes:
+      - { id: rce-lab, level: apply }
+
+  mw-overview:
+    stage: P9
+    required: true
+    title: 中间件漏洞共性
+    prerequisites: [http-basics, auth-basics]
+    outcomes:
+      - { id: mw-patterns, level: understand }
+
+  mw-case:
+    stage: P9
+    required: false
+    title: 中间件选学一案
+    prerequisites: [mw-overview]
+    outcomes:
+      - { id: mw-deep, level: apply }
+
+  db-redis-mysql:
+    stage: P9
+    required: false
+    title: Redis/MySQL 安全入门
+    prerequisites: [auth-basics]
+    outcomes:
+      - { id: db-misconfig, level: understand }
+
+  scanner-mindset:
+    stage: P10
+    required: true
+    title: 扫描器原理与局限
+    prerequisites: [sqli-manual, xss-labs]
+    outcomes:
+      - { id: scanner-limits, level: understand }
+
+  scanner-lab:
+    stage: P10
+    required: false
+    title: 扫描实验（仅靶场）
+    prerequisites: [scanner-mindset]
+    outcomes:
+      - { id: scanner-lab, level: apply }
+
+  methodology:
+    stage: P10
+    required: true
+    title: 方法论串联
+    prerequisites: [scanner-mindset]
+    outcomes:
+      - { id: checklist, level: apply }
+
+  capstone-lab:
+    stage: P10
+    required: true
+    require_transfer: true
+    title: 综合靶场通关
+    prerequisites: [methodology]
+    outcomes:
+      - { id: capstone, level: transfer }

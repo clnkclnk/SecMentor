@@ -68,7 +68,8 @@
       "status": "in_progress",
       "started_at": "2026-07-23T17:00:00+08:00",
       "topics": {
-        "xss-fundamentals": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-003"], "started_at": "2026-07-23T17:00:00+08:00", "completed_at": "2026-07-23T18:21:00+08:00" }
+        "xss-fundamentals": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-003"], "started_at": "2026-07-23T17:00:00+08:00", "completed_at": "2026-07-23T18:21:00+08:00" },
+        "sql-injection": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260724-001"], "started_at": "2026-07-24T20:30:00+08:00", "completed_at": "2026-07-24T22:25:00+08:00" }
       }
     },
     "P3": {
@@ -101,13 +102,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 4,
-    "last_study_date": "2026-07-23"
+    "days": 6,
+    "last_study_date": "2026-07-24"
   },
   "motivation": {
-    "points_total": 395,
-    "points_today": 75,
-    "points_today_date": "2026-07-23",
+    "points_total": 420,
+    "points_today": 25,
+    "points_today_date": "2026-07-24",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -122,6 +123,11 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-24T22:25:00+08:00",
+      "summary": "P4 sql-injection passed。学员完成SQL注入靶场5关实验（报错信号/逻辑运算/登录绕过/UNION联合查询/参数化防御验证）。深入理解单引号越狱原理、OR 1=1全数据返回机制、UNION合并查询偷数据、参数化查询从根源杜绝注入。+25分，总分420，连续学习6天。"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-23T18:21:00+08:00",
@@ -180,5 +186,5 @@
       "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
     }
   ],
-  "updated_at": "2026-07-23T18:21:00+08:00"
+  "updated_at": "2026-07-24T22:25:00+08:00"
 }

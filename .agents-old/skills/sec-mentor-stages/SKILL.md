@@ -37,9 +37,6 @@ description: >-
 - `labs/` 非唯一环境；须有真实操作回报。  
 - hunter：禁问卷主课；禁「地图+漏洞面+博客+整章+任务」一锅端。  
 - 点名领域：必须讲知识，且**拆成多轮带教**；`planned_topics` 空则先静默规划再开讲第一片。  
-- **课纲锚定**：`topic_id` 用 `curriculum.yaml` 的 topics key；拆分/合并 topic 先写进 `path.planned_topics` 并注明替代的原 topic_id，别临场自编（如 `web-http`/`xss-fundamentals`）--否则进度和课纲对不上。  
-- **提问密度**：beginner/practitioner 每片抛 1 个理解性提问，等学员答再继续；别只让学员「操作+观察」就记 passed。  
-- **summary 纪实**：`topic_passed` 的 summary 写清「提问->学员初答->纠错/确认」；只有「学员执行X，理解Y」的按 `over_assisted` 处理。
 
 ## 验收
 

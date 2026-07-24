@@ -89,7 +89,6 @@ locked → available → in_progress → partial | passed | failed
 2. 把同一事件摘要 push 进 `progress.recent_events`，保留最多 20 条。  
 3. 更新 `progress.updated_at`。  
 4. **禁止**把全部历史塞回 `progress.json`。
-5. `topic_id` 用 `curriculum.yaml` 里的 topics key；要拆分/合并就登记到 `path.planned_topics` 并注明替代的原 topic。临场自编 id（如 `web-http`）会让进度和课纲对不上，后续难追踪。
 
 事件类型示例：`placement_completed` / `topic_passed` / `topic_failed` / `evidence_recorded` / `daily_review` / `remediation_started`。
 

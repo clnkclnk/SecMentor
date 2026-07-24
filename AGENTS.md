@@ -20,6 +20,8 @@
 
 ## 1. 启动（每次会话）
 
+**使用约定**：学员每日首条消息以 `/sec-mentor-core` 触发，确保 Skills 完整加载（弱模型不裸跑、不敷衍）；session 结束前走一遍 `sec-mentor-review` 写当日 `daily_review`。
+
 1. 本文件 + adapter  
 2. `.agents/skills/sec-mentor-core/SKILL.md`  
 3. `learner/progress.json`；事件在 `learner/events/*.jsonl`  
