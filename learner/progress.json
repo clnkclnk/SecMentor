@@ -35,7 +35,7 @@
     "still_fuzzy": []
   },
   "current_stage": "P4",
-  "current_topic": "xss-fundamentals",
+  "current_topic": "file-upload",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -69,7 +69,12 @@
       "started_at": "2026-07-23T17:00:00+08:00",
       "topics": {
         "xss-fundamentals": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-003"], "started_at": "2026-07-23T17:00:00+08:00", "completed_at": "2026-07-23T18:21:00+08:00" },
-        "sql-injection": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260724-001"], "started_at": "2026-07-24T20:30:00+08:00", "completed_at": "2026-07-24T22:25:00+08:00" }
+        "sql-injection": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260724-001"], "started_at": "2026-07-24T20:30:00+08:00", "completed_at": "2026-07-24T22:25:00+08:00" },
+        "auth-basics": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
+        "brute-logic": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
+        "burp-intruder": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
+        "csrf-principle": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-002"], "started_at": "2026-07-25T17:03:00+08:00", "completed_at": "2026-07-25T20:54:00+08:00" },
+        "file-upload": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "started_at": "2026-07-25T21:10:00+08:00", "completed_at": "2026-07-25T21:41:00+08:00" }
       }
     },
     "P3": {
@@ -102,13 +107,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 6,
-    "last_study_date": "2026-07-24"
+    "days": 7,
+    "last_study_date": "2026-07-25"
   },
   "motivation": {
-    "points_total": 420,
-    "points_today": 25,
-    "points_today_date": "2026-07-24",
+    "points_total": 470,
+    "points_today": 50,
+    "points_today_date": "2026-07-25",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -123,6 +128,16 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-25T21:41:00+08:00",
+      "summary": "P4 file-upload passed。学员完成文件上传漏洞靶场2关实验：Level 1上传shell.py成功落地WebShell，访问/uploads/shell.py触发RCE（远程代码执行）；Level 2白名单防护下.py被拦截，.jpg通过但随机重命名无法执行。理解WebShell=服务器端任意命令执行、白名单+随机名+非执行目录三件套防御。+25分，总分470，连续学习7天！"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-25T20:54:00+08:00",
+      "summary": "P4 csrf-principle passed。学员亲手构造CSRF攻击HTML（隐藏表单+自动提交），成功对alice账户发起跨站转账攻击(¥3000)；随后用同一攻击页面测试bob的Token防护账户，攻击被「Token验证失败」拦截。完整体验CSRF攻防两端：原理→攻击代码→Token防御→SameSite/二次确认。+25分，总分445，连续学习7天！"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-24T22:25:00+08:00",
@@ -186,5 +201,5 @@
       "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
     }
   ],
-  "updated_at": "2026-07-24T22:25:00+08:00"
+  "updated_at": "2026-07-25T21:41:00+08:00"
 }

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecMentor 学习进度 — clnk</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* ===== Header ===== */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1e1e3a;
+  }
+  .header-left h1 {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header-left p { font-size: 13px; color: #888; margin-top: 4px; }
+  .streak-badge {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ===== Cards Grid ===== */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+
+  .card {
+    background: #16162a;
+    border: 1px solid #252547;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15); }
+
+  .card-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .card-value { font-size: 32px; font-weight: 800; line-height: 1; }
+  .card-sub { font-size: 12px; color: #666; margin-top: 6px; }
+
+  /* Card colors */
+  .points-card .card-value { color: #fbbf24; }
+  .level-card .card-value { color: #a78bfa; font-size: 22px; }
+  .streak-card .card-value { color: #f87171; }
+  .next-card .card-value { color: #34d399; font-size: 20px; }
+
+  /* ===== Progress Bar ===== */
+  .progress-section { margin-bottom: 24px; }
+  .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .progress-title { font-size: 14px; font-weight: 600; color: #aaa; }
+  .progress-pct { font-size: 13px; color: #667eea; font-weight: 700; }
+  .progress-bar-bg {
+    height: 12px;
+    background: #1e1e3a;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 6px;
+    transition: width 1s ease-out;
+    width: 0%;
+  }
+
+  /* ===== Stage Map ===== */
+  .stage-map { margin-bottom: 24px; }
+  .section-title { font-size: 16px; font-weight: 700; color: #ccc; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; display: inline-block; width: 4px; height: 18px; background: linear-gradient(180deg, #667eea, #764ba2); border-radius: 2px; }
+
+  .stage-row {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .stage-tag {
+    background: #1e1e3a;
+    border: 1px solid #2a2a50;
+    border-radius: 8px;
+    padding: 14px 16px;
+    min-width: 80px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .stage-tag.done { border-color: #34d399; color: #34d399; background: rgba(52,211,153,0.08); }
+  .stage-tag.active { border-color: #667eea; color: #667eea; background: rgba(102,126,234,0.1); animation: pulse 2s infinite; }
+  .stage-tag.locked { border-color: #333; color: #555; }
+
+  .topics-track {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .topic-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .topic-dot.passed { background: #34d399; color: #0f0f1a; cursor: default; }
+  .topic-dot.current { background: #667eea; color: #fff; animation: pulse 2s infinite; }
+  .topic-dot.locked { background: #222240; color: #555; border: 1px dashed #333; }
+  .topic-dot .tooltip {
+    visibility: hidden;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #252550;
+    border: 1px solid #3a3a60;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    font-weight: 400;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .topic-dot:hover .tooltip { visibility: visible; opacity: 1; }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(102,126,234,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(102,126,234,0); }
+  }
+
+  /* ===== Timeline ===== */
+  .timeline { margin-bottom: 32px; }
+  .day-block {
+    background: #16162a;
+    border: 1px solid #252547;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 44px;
+  }
+  .day-block::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 28px;
+    bottom: -12px;
+    width: 2px;
+    background: #252547;
+  }
+  .day-block:last-child::before { display: none; }
+  .day-date {
+    position: absolute;
+    left: 14px;
+    top: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #667eea;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .day-title { font-size: 15px; font-weight: 700; color: #ddd; margin-bottom: 8px; }
+  .day-events { display: flex; flex-direction: column; gap: 6px; }
+  .event-item {
+    font-size: 13px;
+    color: #aaa;
+    padding: 8px 12px;
+    background: #1e1e3a;
+    border-radius: 8px;
+    border-left: 3px solid #667eea;
+    line-height: 1.5;
+  }
+  .event-item.stage-event { border-left-color: #fbbf24; }
+  .event-item .pts { float: right; color: #34d399; font-weight: 700; font-size: 12px; }
+
+  /* ===== Radar ===== */
+  .radar-section { margin-bottom: 24px; }
+  .radar-container { display: flex; justify-content: center; padding: 20px 0; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #444;
+    padding: 20px 0;
+    border-top: 1px solid #1e1e3a;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>🛡️ SecMentor 进度仪表盘</h1>
+      <p id="update-time">最后更新：加载中...</p>
+    </div>
+    <div class="streak-badge">🔥 连续 <span id="streak-num">-</span> 天</div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="grid">
+    <div class="card points-card">
+      <div class="card-label">总积分</div>
+      <div class="card-value" id="total-points">-</div>
+      <div class="card-sub" id="points-today">今日 +0 分</div>
+    </div>
+    <div class="card level-card">
+      <div class="card-label">当前等级</div>
+      <div class="card-value" id="level-title">-</div>
+      <div class="card-sub" id="level-num">Level -</div>
+    </div>
+    <div class="card streak-card">
+      <div class="card-label">连续学习</div>
+      <div class="card-value" id="streak-val">-</div>
+      <div class="card-sub">保持住！别断链 🔥</div>
+    </div>
+    <div class="card next-card">
+      <div class="card-label">距下一级</div>
+      <div class="card-value" id="next-level">-</div>
+      <div class="card-sub" id="next-level-name">再接再厉！</div>
+    </div>
+  </div>
+
+  <!-- Level Progress Bar -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-title">当前等级进度</span>
+      <span class="progress-pct" id="level-pct">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="level-bar"></div>
+    </div>
+  </div>
+
+  <!-- Stage Map -->
+  <div class="stage-map">
+    <div class="section-title">🗺️ 通关地图</div>
+    <div id="stage-container"></div>
+  </div>
+
+  <!-- Skills Radar -->
+  <div class="radar-section">
+    <div class="section-title">📊 技能雷达</div>
+    <div class="radar-container">
+      <canvas id="radarCanvas" width="400" height="300"></canvas>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+    <div class="section-title">📅 学习时间线</div>
+    <div id="timeline-container"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    SecMentor Progress Dashboard · 数据来源：learner/progress.json · 自动生成
+  </div>
+</div>
+
+<script>
+// ========== 嵌入的进度数据（从 progress.json 提取） ==========
+const DATA = {
+  learner: "clnk",
+  totalPoints: 470,
+  level: 5,
+  levelTitle: "威震江湖",
+  streakDays: 7,
+  lastStudyDate: "2026-07-25",
+  updatedAt: "2026-07-25T21:41:00+08:00",
+  skills: { net: 3, linux: 3.5, http: 4.5, webapp: 3.5, prog: 1, sec: 4, tooling: 3.5 },
+  stages: [
+    {
+      id: "P0", name: "P0", fullName: "伦理与入门", status: "done",
+      topics: [
+        { id: "ethics-scope", name: "伦理边界", status: "passed", date: "07-18" },
+        { id: "learning-loop", name: "学习循环", status: "passed", date: "07-18" }
+      ]
+    },
+    {
+      id: "P1", name: "P1", fullName: "网络基础", status: "done",
+      topics: [
+        { id: "net-ip-port", name: "IP/端口/DNS", status: "passed", date: "07-18" },
+        { id: "net-tcp-http", name: "TCP/HTTP", status: "passed", date: "07-18" },
+        { id: "os-process-file", name: "进程/文件", status: "passed", date: "07-18" }
+      ]
+    },
+    {
+      id: "P2", name: "P2", fullName: "Linux+环境", status: "done",
+      topics: [
+        { id: "linux-shell", name: "Linux Shell", status: "passed", date: "07-20" },
+        { id: "lab-vm", name: "Docker 环境", status: "passed", date: "07-20" }
+      ]
+    },
+    {
+      id: "P3", name: "P3", fullName: "Web 前置", status: "done",
+      topics: [
+        { id: "web-http", name: "HTTP 报文", status: "passed", date: "07-20" },
+        { id: "web-request-response", name: "请求-响应", status: "passed", date: "07-20" },
+        { id: "web-auth-state", name: "Cookie/Session", status: "passed", date: "07-20" },
+        { id: "web-client-server", name: "客户端-服务端", status: "passed", date: "07-22" },
+        { id: "web-proxy-intro", name: "Burp Suite", status: "passed", date: "07-22" },
+        { id: "web-browser-tools", name: "浏览器工具", status: "passed", date: "07-23" },
+        { id: "web-https-tls", name: "HTTPS/TLS", status: "passed", date: "07-23" }
+      ]
+    },
+    {
+      id: "P4", name: "P4", fullName: "漏洞实战", status: "active",
+      topics: [
+        { id: "xss-fundamentals", name: "XSS 注入", status: "passed", date: "07-23" },
+        { id: "sql-injection", name: "SQL 注入", status: "passed", date: "07-24" },
+        { id: "auth-brute", name: "认证与爆破", status: "passed", date: "07-24" },
+        { id: "csrf-principle", name: "CSRF 伪造", status: "passed", date: "07-25" },
+        { id: "file-upload", name: "文件上传", status: "passed", date: "07-25" }
+      ]
+    },
+    {
+      id: "P5", name: "P5", fullName: "文件类漏洞", status: "locked",
+      topics: [
+        { id: "p5-1", name: "?", status: "locked" }, { id: "p5-2", name: "?", status: "locked" },
+        { id: "p5-3", name: "?", status: "locked" }
+      ]
+    },
+    {
+      id: "P6-P10", name: "P6+", fullName: "进阶内容", status: "locked",
+      topics: [
+        { id: "p6+", name: "...", status: "locked" }
+      ]
+    }
+  ],
+  // 时间线事件
+  timeline: [
+    {
+      date: "2026-07-25", day: "25", weekday: "周六",
+      events: [
+        { type: "topic", text: "✅ P4.5 文件上传漏洞 passed — 上传 shell.py 触发 RCE，白名单拦截 .py", pts: "+25" },
+        { type: "topic", text: "✅ P4.4 CSRF 跨站请求伪造 passed — 亲手构造攻击 HTML 转走 alice ¥3000，Token 拦截 bob", pts: "+25" },
+        { type: "topic", text: "✅ P4.3 认证与爆破 passed — 五种认证/JWT/三种爆破/四层防御", pts: "" }
+      ]
+    },
+    {
+      date: "2026-07-24", day: "24", weekday: "周五",
+      events: [
+        { type: "topic", text: "✅ P4.2 SQL 注入 passed — 完成 5 关靶场实验（报错/逻辑运算/登录绕过/UNION/防御验证）", pts: "+25" },
+        { type: "topic", text: "📦 SecMentor v2 新版本升级完成，保留全部学习进度", pts: "" }
+      ]
+    },
+    {
+      date: "2026-07-23", day: "23", weekday: "周四",
+      events: [
+        { type: "topic", text: "✅ P4.1 XSS Fundamentals passed — 4 关靶场全通（反射型/存储型/DOM型/Cookie窃取）", pts: "+25" },
+        { type: "stage", text: "🎉 P3 Web 前置基础 全部通关！7/7 课题 passed → 进入 P4 漏洞实战阶段！", pts: "+50" },
+        { type: "topic", text: "✅ P3.6 浏览器 DevTools / P3.7 HTTPS-TLS 证书欺骗验证", pts: "+50" }
+      ]
+    },
+    {
+      date: "2026-07-22", day: "22", weekday: "周三",
+      events: [
+        { type: "topic", text: "✅ P3.4 客户端-服务端三层模型 — 掌握完整登录请求链路", pts: "+25" },
+        { type: "topic", text: "✅ P3.5 Burp Suite 入门 — 安装配置、拦截修改 Referer 字段", pts: "+25" }
+      ]
+    },
+    {
+      date: "2026-07-20", day: "20", weekday: "周一",
+      events: [
+        { type: "topic", text: "✅ P3.1 HTTP 报文 / P3.2 请求-响应链 / P3.3 Cookie-Session", pts: "+75" },
+        { type: "topic", text: "✅ P2.2 Docker 安装 + 镜像加速器配置", pts: "+25" },
+        { type: "stage", text: "🎉 P2 Linux 与工作环境阶段完成！", pts: "" }
+      ]
+    },
+    {
+      date: "2026-07-19~18", day: "18", weekday: "起始",
+      events: [
+        { type: "stage", text: "🚀 P0 伦理边界 + P1 网络基础（IP/端口/DNS/TCP/进程）全部通过", pts: "+125" },
+        { type: "topic", text: "✅ P2.1 WSL2 Ubuntu 安装 + Linux Shell 基础命令", pts: "+25" }
+      ]
+    }
+  ]
+};
+
+// ========== 等级表（新版称号体系，与 progress.json 对齐） ==========
+const LEVELS = [
+  { min: 0,    max: 49,   title: "门外汉",     color: "#888" },
+  { min: 50,   max: 149,  title: "记名弟子",   color: "#a78bfa" },
+  { min: 150,  max: 299,  title: "入室弟子",   color: "#60a5fa" },
+  { min: 300,  max: 369,  title: "内门弟子",   color: "#34d399" },
+  { min: 370,  max: 699,  title: "威震江湖",   color: "#ef4444" },
+  { min: 700,  max: 99999,title: "一代宗师",   color: "#f59e0b" },
+];
+
+// ========== 渲染函数 ==========
+function render() {
+  // 卡片
+  document.getElementById('total-points').textContent = DATA.totalPoints;
+  document.getElementById('level-title').textContent = DATA.levelTitle;
+  document.getElementById('level-num').textContent = `Level ${DATA.level}`;
+  document.getElementById('streak-val').textContent = DATA.streakDays + ' 天';
+  document.getElementById('streak-num').textContent = DATA.streakDays;
+  document.getElementById('update-time').textContent = `最后更新：${DATA.updatedAt.replace('T', ' ').replace('+08:00', '')}`;
+
+  // 距下一级
+  const currentLvl = LEVELS.find(l => DATA.totalPoints >= l.min && DATA.totalPoints <= l.max) || LEVELS[LEVELS.length - 1];
+  const nextLvl = LEVELS[LEVELS.indexOf(currentLvl) + 1];
+  if (nextLvl) {
+    const need = nextLvl.min - DATA.totalPoints;
+    document.getElementById('next-level').textContent = `还差 ${need} 分`;
+    document.getElementById('next-level-name').textContent = `→ ${nextLvl.title}`;
+  } else {
+    document.getElementById('next-level').textContent = '已满级!';
+    document.getElementById('next-level-name').textContent = '你是传说！';
+  }
+
+  // 进度条
+  const pct = ((DATA.totalPoints - currentLvl.min) / (currentLvl.max - currentLvl.min)) * 100;
+  const bar = document.getElementById('level-bar');
+  document.getElementById('level-pct').textContent = `${Math.round(pct)}%`;
+  setTimeout(() => bar.style.width = pct + '%', 100);
+
+  // 通关地图
+  const stageContainer = document.getElementById('stage-container');
+  stageContainer.innerHTML = '';
+  DATA.stages.forEach(stage => {
+    const row = document.createElement('div');
+    row.className = 'stage-row';
+
+    let tagClass = stage.status === 'done' ? 'done' : stage.status === 'active' ? 'active' : 'locked';
+    row.innerHTML = `<div class="stage-tag ${tagClass}">${stage.name}</div><div class="topics-track">`;
+
+    stage.topics.forEach(t => {
+      let dotClass = t.status === 'passed' ? 'passed' : t.status === 'current' ? 'current' : 'locked';
+      let icon = t.status === 'passed' ? '✓' : t.name;
+      let tooltip = `<span class="tooltip">${t.name}${t.date ? ' (' + t.date + ')' : ''}</span>`;
+      row.innerHTML += `<div class="topic-dot ${dotClass}">${icon}${tooltip}</div>`;
+    });
+
+    row.innerHTML += '</div>';
+    stageContainer.appendChild(row);
+  });
+
+  // 时间线
+  const tlContainer = document.getElementById('timeline-container');
+  tlContainer.innerHTML = '';
+  DATA.timeline.forEach(day => {
+    const block = document.createElement('div');
+    block.className = 'day-block';
+    block.innerHTML = `<div class="day-date">${day.day}</div><div class="day-title">${day.date} ${day.weekday}</div><div class="day-events">`;
+
+    day.events.forEach(e => {
+      block.innerHTML += `<div class="event-item ${e.type === 'stage' ? 'stage-event' : ''}">${e.text}${e.pts ? '<span class="pts">' + e.pts + '</span>' : ''}</div>`;
+    });
+    block.innerHTML += '</div>';
+    tlContainer.appendChild(block);
+  });
+
+  // 雷达图
+  drawRadar();
+}
+
+// ========== 雷达图绘制 ==========
+function drawRadar() {
+  const canvas = document.getElementById('radarCanvas');
+  const ctx = canvas.getContext('2d');
+  const cx = 200, cy = 155, radius = 110;
+
+  const labels = ['网络', 'Linux', 'HTTP', 'Web应用', '编程', '安全', '工具'];
+  const values = [DATA.skills.net, DATA.skills.linux, DATA.skills.http, DATA.skills.webapp, DATA.skills.prog, DATA.skills.sec, DATA.skills.tooling];
+  const maxVal = 5;
+  const n = labels.length;
+  const angleStep = (Math.PI * 2) / n;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 背景网格
+  for (let r = 1; r <= 5; r++) {
+    ctx.beginPath();
+    const rr = (radius / 5) * r;
+    for (let i = 0; i <= n; i++) {
+      const a = angleStep * i - Math.PI / 2;
+      const x = cx + Math.cos(a) * rr;
+      const y = cy + Math.sin(a) * rr;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = r === 5 ? '#3a3a60' : '#222240';
+    ctx.lineWidth = r === 5 ? 1.5 : 0.5;
+    ctx.stroke();
+  }
+
+  // 轴线
+  for (let i = 0; i < n; i++) {
+    const a = angleStep * i - Math.PI / 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(a) * radius, cy + Math.sin(a) * radius);
+    ctx.strokeStyle = '#222240';
+    ctx.stroke();
+  }
+
+  // 数据区域
+  ctx.beginPath();
+  for (let i = 0; i <= n; i++) {
+    const idx = i % n;
+    const a = angleStep * idx - Math.PI / 2;
+    const val = Math.max(0, Math.min(values[idx], maxVal)) / maxVal;
+    const x = cx + Math.cos(a) * radius * val;
+    const y = cy + Math.sin(a) * radius * val;
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(102, 126, 234, 0.2)';
+  ctx.fill();
+  ctx.strokeStyle = '#667eea';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // 数据点
+  for (let i = 0; i < n; i++) {
+    const a = angleStep * i - Math.PI / 2;
+    const val = Math.max(0, Math.min(values[i], maxVal)) / maxVal;
+    const x = cx + Math.cos(a) * radius * val;
+    const y = cy + Math.sin(a) * radius * val;
+    ctx.beginPath();
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#a78bfa';
+    ctx.fill();
+  }
+
+  // 标签
+  ctx.font = '12px -apple-system, sans-serif';
+  ctx.fillStyle = '#888';
+  ctx.textAlign = 'center';
+  for (let i = 0; i < n; i++) {
+    const a = angleStep * i - Math.PI / 2;
+    const x = cx + Math.cos(a) * (radius + 22);
+    const y = cy + Math.sin(a) * (radius + 22);
+    ctx.fillText(labels[i], x, y + 4);
+  }
+}
+
+// 启动
+render();
+</script>
+</body>
+</html>

