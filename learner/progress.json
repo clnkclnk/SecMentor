@@ -34,8 +34,8 @@
     "skipped_topics": [],
     "still_fuzzy": []
   },
-  "current_stage": "P4",
-  "current_topic": "file-upload",
+  "current_stage": "P6",
+  "current_topic": "ssrf",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -65,7 +65,8 @@
       }
     },
     "P4": {
-      "status": "in_progress",
+      "status": "completed",
+      "completed_at": "2026-07-25T21:41:00+08:00",
       "started_at": "2026-07-23T17:00:00+08:00",
       "topics": {
         "xss-fundamentals": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-003"], "started_at": "2026-07-23T17:00:00+08:00", "completed_at": "2026-07-23T18:21:00+08:00" },
@@ -75,6 +76,24 @@
         "burp-intruder": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
         "csrf-principle": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-002"], "started_at": "2026-07-25T17:03:00+08:00", "completed_at": "2026-07-25T20:54:00+08:00" },
         "file-upload": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "started_at": "2026-07-25T21:10:00+08:00", "completed_at": "2026-07-25T21:41:00+08:00" }
+      }
+    },
+    "P6": {
+      "status": "in_progress",
+      "started_at": "2026-07-26T20:57:00+08:00",
+      "topics": {
+        "ssrf": { "status": "in_progress", "started_at": "2026-07-26T20:57:00+08:00" }
+      }
+    },
+    "P5": {
+      "status": "completed",
+      "completed_at": "2026-07-26T20:56:00+08:00",
+      "started_at": "2026-07-26T19:27:00+08:00",
+      "topics": {
+        "upload-basics": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "completed_at": "2026-07-25T21:41:00+08:00" },
+        "upload-labs": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "completed_at": "2026-07-25T21:41:00+08:00" },
+        "file-download": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260726-001"], "started_at": "2026-07-26T19:27:00+08:00", "completed_at": "2026-07-26T20:10:00+08:00" },
+        "lfi": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260726-002"], "started_at": "2026-07-26T20:11:00+08:00", "completed_at": "2026-07-26T20:56:00+08:00" }
       }
     },
     "P3": {
@@ -107,13 +126,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 7,
-    "last_study_date": "2026-07-25"
+    "days": 8,
+    "last_study_date": "2026-07-26"
   },
   "motivation": {
-    "points_total": 470,
+    "points_total": 520,
     "points_today": 50,
-    "points_today_date": "2026-07-25",
+    "points_today_date": "2026-07-26",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -128,6 +147,16 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "stage_completed",
+      "ts": "2026-07-26T20:56:00+08:00",
+      "summary": "P5 文件类漏洞阶段全部通关！4/4 课题 passed（upload-basics/upload-labs/file-download/lfi）。学员完成路径穿越靶场2关(6个..\\读hosts + realpath拦截) + LFI靶场2关(webshell RCE拿到whoami=刘帅超 + ../lfi_secret.py读数据库密码 + 白名单防御)。理解文件操作类三大漏洞：上传(WebShell=RCE)、下载(路径穿越=任意读)、包含(LFI/RFI=代码执行)。+50分，总分520，连续学习8天！进入 P6 SSRF/XXE 高级服务端攻击。"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-26T20:10:00+08:00",
+      "summary": "P5 file-download (路径穿越) passed。学员完成路径穿越靶场2关实验：Level 1无防护下用6个..\\穿越目录层级，成功读取Windows系统hosts文件；Level 2启用os.path.realpath()归一化+startswith白名单校验，同一payload被拦截。理解路径穿越原理(..回退)、归一化防御、hosts文件作用(本地DNS/内网信息泄露)。+25分，总分495，连续学习8天！"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-25T21:41:00+08:00",

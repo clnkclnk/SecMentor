@@ -300,12 +300,12 @@
 // ========== 嵌入的进度数据（从 progress.json 提取） ==========
 const DATA = {
   learner: "clnk",
-  totalPoints: 470,
+  totalPoints: 520,
   level: 5,
   levelTitle: "威震江湖",
-  streakDays: 7,
-  lastStudyDate: "2026-07-25",
-  updatedAt: "2026-07-25T21:41:00+08:00",
+  streakDays: 8,
+  lastStudyDate: "2026-07-26",
+  updatedAt: "2026-07-26T20:57:00+08:00",
   skills: { net: 3, linux: 3.5, http: 4.5, webapp: 3.5, prog: 1, sec: 4, tooling: 3.5 },
   stages: [
     {
@@ -343,7 +343,7 @@ const DATA = {
       ]
     },
     {
-      id: "P4", name: "P4", fullName: "漏洞实战", status: "active",
+      id: "P4", name: "P4", fullName: "漏洞实战", status: "done",
       topics: [
         { id: "xss-fundamentals", name: "XSS 注入", status: "passed", date: "07-23" },
         { id: "sql-injection", name: "SQL 注入", status: "passed", date: "07-24" },
@@ -353,21 +353,38 @@ const DATA = {
       ]
     },
     {
-      id: "P5", name: "P5", fullName: "文件类漏洞", status: "locked",
+      id: "P5", name: "P5", fullName: "文件类漏洞", status: "done",
       topics: [
-        { id: "p5-1", name: "?", status: "locked" }, { id: "p5-2", name: "?", status: "locked" },
-        { id: "p5-3", name: "?", status: "locked" }
+        { id: "upload-basics", name: "上传基础", status: "passed", date: "07-25" },
+        { id: "upload-labs", name: "上传靶场", status: "passed", date: "07-25" },
+        { id: "file-download", name: "路径穿越", status: "passed", date: "07-26" },
+        { id: "lfi", name: "文件包含", status: "passed", date: "07-26" }
       ]
     },
     {
-      id: "P6-P10", name: "P6+", fullName: "进阶内容", status: "locked",
+      id: "P6", name: "P6", fullName: "服务端攻击", status: "active",
       topics: [
-        { id: "p6+", name: "...", status: "locked" }
+        { id: "ssrf", name: "SSRF", status: "current" },
+        { id: "p6-2", name: "?", status: "locked" }
+      ]
+    },
+    {
+      id: "P6-P10", name: "P7+", fullName: "进阶内容", status: "locked",
+      topics: [
+        { id: "p7+", name: "...", status: "locked" }
       ]
     }
   ],
   // 时间线事件
   timeline: [
+    {
+      date: "2026-07-26", day: "26", weekday: "周日",
+      events: [
+        { type: "topic", text: "✅ P5.2 文件包含(LFI) passed — page=webshell 触发 whoami RCE，../lfi_secret.py 读数据库密码，白名单拦截", pts: "+25" },
+        { type: "topic", text: "✅ P5.1 路径穿越 passed — 6层 ..\\ 读 Windows hosts，realpath 防御拦截", pts: "+25" },
+        { type: "stage", text: "🎉 P5 文件类漏洞阶段全部通关！4/4 课题 passed（上传/下载/包含）", pts: "+50" }
+      ]
+    },
     {
       date: "2026-07-25", day: "25", weekday: "周六",
       events: [

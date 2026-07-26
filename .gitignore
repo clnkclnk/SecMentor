@@ -1,4 +1,6 @@
 # ===== 敏感信息 - 绝对不能上传 =====
+# 整个 .workbuddy 目录（含 MCP 配置/密钥/数据库/个人文件）
+.workbuddy/
 # 剪贴板截图（含 Cookie / 个人信息）
 .workbuddy/clipboard-images/
 # 临时二进制文件（含 Cookie 截图等）

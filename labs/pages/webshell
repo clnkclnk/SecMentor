@@ -1,0 +1,2 @@
+import os
+print("🐚 RCE 成功！当前系统用户：", os.popen("whoami").read().strip())
