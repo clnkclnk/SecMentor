@@ -300,12 +300,12 @@
 // ========== 嵌入的进度数据（从 progress.json 提取） ==========
 const DATA = {
   learner: "clnk",
-  totalPoints: 520,
+  totalPoints: 545,
   level: 5,
   levelTitle: "威震江湖",
-  streakDays: 8,
-  lastStudyDate: "2026-07-26",
-  updatedAt: "2026-07-26T20:57:00+08:00",
+  streakDays: 9,
+  lastStudyDate: "2026-07-27",
+  updatedAt: "2026-07-27T21:45:00+08:00",
   skills: { net: 3, linux: 3.5, http: 4.5, webapp: 3.5, prog: 1, sec: 4, tooling: 3.5 },
   stages: [
     {
@@ -364,7 +364,7 @@ const DATA = {
     {
       id: "P6", name: "P6", fullName: "服务端攻击", status: "active",
       topics: [
-        { id: "ssrf", name: "SSRF", status: "current" },
+        { id: "ssrf", name: "SSRF", status: "passed", date: "07-27" },
         { id: "p6-2", name: "?", status: "locked" }
       ]
     },
@@ -377,6 +377,12 @@ const DATA = {
   ],
   // 时间线事件
   timeline: [
+    {
+      date: "2026-07-27", day: "27", weekday: "周一",
+      events: [
+        { type: "topic", text: "✅ P6.1 SSRF 服务端请求伪造 passed — 借服务器身份打 /secret(FLAG)、/meta(云密钥)、/redis(本机数据库)，Level2 白名单拦截", pts: "+25" }
+      ]
+    },
     {
       date: "2026-07-26", day: "26", weekday: "周日",
       events: [

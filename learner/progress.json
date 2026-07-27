@@ -82,7 +82,7 @@
       "status": "in_progress",
       "started_at": "2026-07-26T20:57:00+08:00",
       "topics": {
-        "ssrf": { "status": "in_progress", "started_at": "2026-07-26T20:57:00+08:00" }
+        "ssrf": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260727-001"], "started_at": "2026-07-26T20:57:00+08:00", "completed_at": "2026-07-27T21:45:00+08:00" }
       }
     },
     "P5": {
@@ -126,13 +126,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 8,
-    "last_study_date": "2026-07-26"
+    "days": 9,
+    "last_study_date": "2026-07-27"
   },
   "motivation": {
-    "points_total": 520,
-    "points_today": 50,
-    "points_today_date": "2026-07-26",
+    "points_total": 545,
+    "points_today": 25,
+    "points_today_date": "2026-07-27",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -147,6 +147,11 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-27T21:45:00+08:00",
+      "summary": "P6 SSRF (服务端请求伪造) passed。学员完成SSRF靶场实验：Level 1漏洞版下成功借服务器身份访问内网资源——/secret拿到FLAG、/meta泄露云密钥AKIA_、/redis操作本机Redis数据库(PING/SET pwned_ssrf)；Level 2白名单防御拦截127.0.0.1。理解SSRF核心(骗服务器替你发请求)、与CSRF区别(骗浏览器vs骗服务器)、三大攻击目标(本机服务/云元数据/内网扫描)。+25分，总分545，连续学习9天！"
+    },
     {
       "type": "stage_completed",
       "ts": "2026-07-26T20:56:00+08:00",
