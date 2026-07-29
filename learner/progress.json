@@ -35,7 +35,7 @@
     "still_fuzzy": []
   },
   "current_stage": "P6",
-  "current_topic": "ssrf",
+  "current_topic": "rce",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -82,7 +82,10 @@
       "status": "in_progress",
       "started_at": "2026-07-26T20:57:00+08:00",
       "topics": {
-        "ssrf": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260727-001"], "started_at": "2026-07-26T20:57:00+08:00", "completed_at": "2026-07-27T21:45:00+08:00" }
+        "ssrf": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260727-001"], "started_at": "2026-07-26T20:57:00+08:00", "completed_at": "2026-07-27T21:45:00+08:00" },
+        "xxe": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260729-001"], "started_at": "2026-07-28T19:17:00+08:00", "completed_at": "2026-07-29T19:28:00+08:00" },
+        "deserialization": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260729-002"], "started_at": "2026-07-29T21:22:00+08:00", "completed_at": "2026-07-29T21:49:00+08:00" },
+        "rce": { "status": "in_progress", "mastery": "understand", "started_at": "2026-07-29T22:38:00+08:00" }
       }
     },
     "P5": {
@@ -126,13 +129,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 9,
-    "last_study_date": "2026-07-27"
+    "days": 11,
+    "last_study_date": "2026-07-29"
   },
   "motivation": {
-    "points_total": 545,
-    "points_today": 25,
-    "points_today_date": "2026-07-27",
+    "points_total": 595,
+    "points_today": 50,
+    "points_today_date": "2026-07-29",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -147,6 +150,16 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-29T21:49:00+08:00",
+      "summary": "P6 反序列化 (Deserialization) passed。学员完成反序列化靶场实验：Level 1漏洞版(pickle.loads)下生成恶意pickle对象(Exploit.__reduce__→_rce()执行whoami)，提交后服务器还原对象瞬间自动执行命令拿到系统用户(刘帅超)；Level 2防御版(仅JSON纯数据)下pickle字节被拒绝，未执行任何代码。理解反序列化本质(数据变代码)、与已学对比(原料=恶意序列化对象，最阴险=不易察觉/易隐藏)、防御(JSON替代+签名校验)。+25分，总分595，连续学习11天！"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-29T19:28:00+08:00",
+      "summary": "P6 XXE (XML外部实体注入) passed。学员完成XXE靶场实验：Level 1漏洞版(lxml开启外部实体解析)下成功用XML payload读取系统hosts文件、泄露靶场秘密配置(DB_PASSWORD/API_KEY)、SSRF组合打内网拿到FLAG{xxe_reached_internal_service_2026}；Level 2防御版(resolve_entities=False)下外部实体不展开。理解XXE=路径穿越(读文件)+SSRF(发请求)合体、实体=变量概念、防御(resolve_entities=False+no_network=True)。+25分，总分570，连续学习11天！"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-27T21:45:00+08:00",

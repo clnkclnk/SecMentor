@@ -300,13 +300,13 @@
 // ========== 嵌入的进度数据（从 progress.json 提取） ==========
 const DATA = {
   learner: "clnk",
-  totalPoints: 545,
+  totalPoints: 595,
   level: 5,
   levelTitle: "威震江湖",
-  streakDays: 9,
-  lastStudyDate: "2026-07-27",
-  updatedAt: "2026-07-27T21:45:00+08:00",
-  skills: { net: 3, linux: 3.5, http: 4.5, webapp: 3.5, prog: 1, sec: 4, tooling: 3.5 },
+  streakDays: 11,
+  lastStudyDate: "2026-07-29",
+  updatedAt: "2026-07-29T22:38:00+08:00",
+  skills: { net: 3, linux: 3.5, http: 4.5, webapp: 4, prog: 1.5, sec: 4.5, tooling: 4 },
   stages: [
     {
       id: "P0", name: "P0", fullName: "伦理与入门", status: "done",
@@ -365,7 +365,9 @@ const DATA = {
       id: "P6", name: "P6", fullName: "服务端攻击", status: "active",
       topics: [
         { id: "ssrf", name: "SSRF", status: "passed", date: "07-27" },
-        { id: "p6-2", name: "?", status: "locked" }
+        { id: "xxe", name: "XXE", status: "passed", date: "07-29" },
+        { id: "deserialization", name: "反序列化", status: "passed", date: "07-29" },
+        { id: "rce", name: "RCE", status: "current", date: "07-29" }
       ]
     },
     {
@@ -377,6 +379,14 @@ const DATA = {
   ],
   // 时间线事件
   timeline: [
+    {
+      date: "2026-07-29", day: "29", weekday: "周三",
+      events: [
+        { type: "topic", text: "✅ P6.3 反序列化 passed — 造恶意 pickle 对象，服务器还原瞬间执行 whoami 拿到系统用户(刘帅超)，Level2 仅 JSON 纯数据拦截", pts: "+25" },
+        { type: "topic", text: "✅ P6.2 XXE 已通关(07-29) — XML 外部实体读 hosts/秘密 + SSRF 打内网拿 FLAG", pts: "" },
+        { type: "topic", text: "📖 P6.4 RCE 综合 原理已教 — 命令注入(;|&&分隔符)与代码注入(eval)，RCE 全家福：上传/LFI/反序列化/命令注入殊途同归", pts: "" }
+      ]
+    },
     {
       date: "2026-07-27", day: "27", weekday: "周一",
       events: [
