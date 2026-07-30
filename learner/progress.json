@@ -34,8 +34,8 @@
     "skipped_topics": [],
     "still_fuzzy": []
   },
-  "current_stage": "P6",
-  "current_topic": "rce",
+  "current_stage": "P9",
+  "current_topic": "redis-unauth",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -79,13 +79,20 @@
       }
     },
     "P6": {
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-07-26T20:57:00+08:00",
       "topics": {
         "ssrf": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260727-001"], "started_at": "2026-07-26T20:57:00+08:00", "completed_at": "2026-07-27T21:45:00+08:00" },
         "xxe": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260729-001"], "started_at": "2026-07-28T19:17:00+08:00", "completed_at": "2026-07-29T19:28:00+08:00" },
         "deserialization": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260729-002"], "started_at": "2026-07-29T21:22:00+08:00", "completed_at": "2026-07-29T21:49:00+08:00" },
-        "rce": { "status": "in_progress", "mastery": "understand", "started_at": "2026-07-29T22:38:00+08:00" }
+        "rce": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-001"], "started_at": "2026-07-29T22:38:00+08:00", "completed_at": "2026-07-30T19:52:00+08:00" }
+      }
+    },
+    "P9": {
+      "status": "in_progress",
+      "started_at": "2026-07-30T22:50:00+08:00",
+      "topics": {
+        "redis-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-002"], "started_at": "2026-07-30T22:50:00+08:00", "completed_at": "2026-07-30T23:25:00+08:00" }
       }
     },
     "P5": {
@@ -129,13 +136,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 11,
-    "last_study_date": "2026-07-29"
+    "days": 12,
+    "last_study_date": "2026-07-30"
   },
   "motivation": {
-    "points_total": 595,
+    "points_total": 645,
     "points_today": 50,
-    "points_today_date": "2026-07-29",
+    "points_today_date": "2026-07-30",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -150,6 +157,16 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-30T23:25:00+08:00",
+      "summary": "P9.1 Redis 未授权访问 (Unauthorized Redis Access) passed。学员完成 Redis 靶场实验(:5008)：Level 1漏洞版(无认证)下 KEYS * 列光全部键(user/session/flag)、GET flag 读出 FLAG{redis_unauth_leaked_2026} 无需任何密码；Level 2防御版(requirepass强密码)下无密码 GET flag 被拒、带正确密码 StrongPass#2026 才放行。理解Redis未授权本质(默认无密码+错误bind 0.0.0.0)、最危险升级路径(CONFIG SET dir/dbfilename + SAVE 生成WebShell → RCE)、防御(bind 127.0.0.1+requirepass+protected-mode)。+25分，总分645，连续学习12天！"
+    },
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-30T19:52:00+08:00",
+      "summary": "P6 RCE 综合/命令注入 (Command Injection) passed。学员完成命令注入靶场实验：Level 1漏洞版(用户输入拼进命令行)下用分号;逃逸出原ping命令，追加whoami执行成功拿到系统用户(刘帅超)；Level 2防御版(白名单仅IP+参数化shell=False)下注入被拒绝。理解命令注入本质(分隔符让输入从参数变成新命令)、5种分隔符(;|&&&`$())、防御(参数化+白名单)。P6服务端进阶四大课题全部通关(SSRF/XXE/反序列化/RCE)！+25分，总分620，连续学习12天！"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-29T21:49:00+08:00",
