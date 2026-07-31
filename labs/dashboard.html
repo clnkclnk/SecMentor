@@ -300,12 +300,12 @@
 // ========== 嵌入的进度数据（从 progress.json 提取） ==========
 const DATA = {
   learner: "clnk",
-  totalPoints: 645,
+  totalPoints: 670,
   level: 5,
   levelTitle: "威震江湖",
-  streakDays: 12,
-  lastStudyDate: "2026-07-30",
-  updatedAt: "2026-07-30T23:31:00+08:00",
+  streakDays: 13,
+  lastStudyDate: "2026-07-31",
+  updatedAt: "2026-07-31T19:36:00+08:00",
   skills: { net: 3, linux: 3.5, http: 4.5, webapp: 4.5, prog: 1.5, sec: 5, tooling: 4.5 },
   stages: [
     {
@@ -374,8 +374,8 @@ const DATA = {
       id: "P9", name: "P9", fullName: "中间件与数据库", status: "active",
       topics: [
         { id: "redis-unauth", name: "Redis未授权", status: "passed", date: "07-30" },
-        { id: "mysql-weakpass", name: "MySQL弱口令", status: "locked" },
-        { id: "admin-port", name: "管理端口暴露", status: "locked" }
+        { id: "mw-overview", name: "中间件共性", status: "passed", date: "07-31" },
+        { id: "mysql-weak-unauth", name: "MySQL弱口令/未授权", status: "passed", date: "07-31" }
       ]
     },
     {
@@ -387,6 +387,13 @@ const DATA = {
   ],
   // 时间线事件
   timeline: [
+    {
+      date: "2026-07-31", day: "31", weekday: "周五",
+      events: [
+        { type: "topic", text: "✅ P9 中间件漏洞共性(mw-overview) passed — 三大共性模式：默认无密码/弱口令/危险功能暴露", pts: "" },
+        { type: "topic", text: "✅ P9 MySQL弱口令/未授权 passed — 靶场(:5009)弱口令admin/123456登录、未授权/vuln/users拖全部明文密码、/vuln/secret拿FLAG{mysql_weak_pwd_pwned_2026}", pts: "+25" }
+      ]
+    },
     {
       date: "2026-07-30", day: "30", weekday: "周四",
       events: [

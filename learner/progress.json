@@ -35,7 +35,7 @@
     "still_fuzzy": []
   },
   "current_stage": "P9",
-  "current_topic": "redis-unauth",
+  "current_topic": "mw-case",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -92,7 +92,9 @@
       "status": "in_progress",
       "started_at": "2026-07-30T22:50:00+08:00",
       "topics": {
-        "redis-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-002"], "started_at": "2026-07-30T22:50:00+08:00", "completed_at": "2026-07-30T23:25:00+08:00" }
+        "redis-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-002"], "started_at": "2026-07-30T22:50:00+08:00", "completed_at": "2026-07-30T23:25:00+08:00" },
+        "mw-overview": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260731-001"], "started_at": "2026-07-31T16:40:00+08:00", "completed_at": "2026-07-31T19:36:00+08:00" },
+        "mysql-weak-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260731-001"], "started_at": "2026-07-31T16:40:00+08:00", "completed_at": "2026-07-31T19:36:00+08:00" }
       }
     },
     "P5": {
@@ -136,13 +138,13 @@
     "celebrations": true
   },
   "streak": {
-    "days": 12,
-    "last_study_date": "2026-07-30"
+    "days": 13,
+    "last_study_date": "2026-07-31"
   },
   "motivation": {
-    "points_total": 645,
-    "points_today": 50,
-    "points_today_date": "2026-07-30",
+    "points_total": 670,
+    "points_today": 25,
+    "points_today_date": "2026-07-31",
     "level": 5,
     "title": "威震江湖",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
@@ -157,6 +159,11 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "topic_passed",
+      "ts": "2026-07-31T19:36:00+08:00",
+      "summary": "P9 中间件漏洞共性(mw-overview) + MySQL弱口令/未授权(mysql-weak-unauth) passed。学员完成MySQL安全靶场(:5009)：①弱口令登录 admin/123456 拿到admin-session token；②未授权拖库 /vuln/users 无需任何认证直接返回全部用户明文密码(admin/123456、alice/Passw0rd!2026、bob/qwe123)；③未授权拿FLAG /vuln/secret?k=flag 返回 FLAG{mysql_weak_pwd_pwned_2026}。理解中间件三大共性模式(默认无密码/弱口令/危险功能暴露)、Redis与MySQL同类问题对比(服务层vs接口层)、弱口令=猜钥匙、未授权=门没锁。+25分，总分670，连续学习13天！"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-30T23:25:00+08:00",
