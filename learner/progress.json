@@ -34,8 +34,8 @@
     "skipped_topics": [],
     "still_fuzzy": []
   },
-  "current_stage": "P9",
-  "current_topic": "mw-case",
+  "current_stage": "P10",
+  "current_topic": "capstone",
   "active_failure": null,
   "stages": {
     "P0": {
@@ -89,12 +89,21 @@
       }
     },
     "P9": {
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-07-30T22:50:00+08:00",
+      "completed_at": "2026-07-31T19:36:00+08:00",
       "topics": {
         "redis-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-002"], "started_at": "2026-07-30T22:50:00+08:00", "completed_at": "2026-07-30T23:25:00+08:00" },
         "mw-overview": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260731-001"], "started_at": "2026-07-31T16:40:00+08:00", "completed_at": "2026-07-31T19:36:00+08:00" },
         "mysql-weak-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260731-001"], "started_at": "2026-07-31T16:40:00+08:00", "completed_at": "2026-07-31T19:36:00+08:00" }
+      }
+    },
+    "P10": {
+      "status": "completed",
+      "started_at": "2026-08-02T15:49:00+08:00",
+      "completed_at": "2026-08-02T21:58:00+08:00",
+      "topics": {
+        "capstone": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260802-p10"], "started_at": "2026-08-02T15:49:00+08:00", "completed_at": "2026-08-02T21:58:00+08:00" }
       }
     },
     "P5": {
@@ -124,13 +133,13 @@
     }
   },
   "skills_radar": {
-    "net": 3,
+    "net": 3.5,
     "linux": 3.5,
-    "http": 4.5,
-    "webapp": 3.5,
-    "prog": 1,
-    "sec": 4,
-    "tooling": 3.5
+    "http": 5,
+    "webapp": 4.5,
+    "prog": 1.5,
+    "sec": 4.5,
+    "tooling": 4
   },
   "preferences": {
     "language": "zh-CN",
@@ -138,27 +147,32 @@
     "celebrations": true
   },
   "streak": {
-    "days": 13,
-    "last_study_date": "2026-07-31"
+    "days": 2,
+    "last_study_date": "2026-08-02"
   },
   "motivation": {
-    "points_total": 670,
-    "points_today": 25,
-    "points_today_date": "2026-07-31",
-    "level": 5,
-    "title": "威震江湖",
-    "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete"],
-    "last_encouragement_at": "2026-07-23T16:33:00+08:00",
+    "points_total": 745,
+    "points_today": 75,
+    "points_today_date": "2026-08-02",
+    "level": 6,
+    "title": "独步天下",
+    "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete", "ms-p10-capstone"],
+    "last_encouragement_at": "2026-08-02T21:58:00+08:00",
     "pending_celebration": {
       "kind": "level_up",
-      "title": "升级！威震江湖 + P3通关庆典",
-      "points_delta": 50,
-      "points_total": 370,
-      "message": "P3 全部通关！从HTTP报文到Burp抓包到TLS证书，Web前置基础全部掌握。你已从「名动一方」晋升「威震江湖」。进入 P4 漏洞实战阶段！"
+      "title": "毕业考通关！P10 综合靶场六枚 FLAG 全部到手！",
+      "points_delta": 75,
+      "points_total": 745,
+      "message": "P10 毕业考 SecBlog 综合靶场全部通关！6/6 FLAG：弱口令(weakpwd_admin) + 命令注入(cmdi_root) + SSRF×2(ssrf_found_redis/ssrf_internal) + 上传绕过(upload_bypass) + 存储型XSS(secblog_xss_stored_2026)。从零基础到独立完成六漏洞综合靶场，Web安全基础阶段圆满结束！"
     }
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "stage_completed",
+      "ts": "2026-08-02T21:58:00+08:00",
+      "summary": "🎓 P10 毕业考 SecBlog 综合靶场全部通关！6/6 FLAG：①弱口令 admin/123456 → weakpwd_admin；②命令注入 127.0.0.1 & whoami → cmdi_root；③SSRF探Redis 127.0.0.1:6379 → ssrf_found_redis；④SSRF内部接口 → ssrf_internal；⑤上传绕过双扩展名.py.jpg → upload_bypass；⑥存储型XSS评论注入<script>偷cookie → secblog_xss_stored_2026。学员独立按渗透方法论（信息收集→认证→客户端→服务端→命令执行→上传）逐个击破，理解了综合靶场中多漏洞共存的真实场景、/xss-trigger收赃点原理（真实攻击=黑客服务器地址）。+75分（毕业考奖励），总分745，升至Level 6「独步天下」！Web安全基础阶段P0~P10全部完成！"
+    },
     {
       "type": "topic_passed",
       "ts": "2026-07-31T19:36:00+08:00",
@@ -272,5 +286,5 @@
       "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
     }
   ],
-  "updated_at": "2026-07-25T21:41:00+08:00"
+  "updated_at": "2026-08-02T21:58:00+08:00"
 }

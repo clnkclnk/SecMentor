@@ -303,8 +303,8 @@ const DATA = {
   totalPoints: 670,
   level: 5,
   levelTitle: "威震江湖",
-  streakDays: 13,
-  lastStudyDate: "2026-07-31",
+  streakDays: 1,
+  lastStudyDate: "2026-08-02",
   updatedAt: "2026-07-31T19:36:00+08:00",
   skills: { net: 3, linux: 3.5, http: 4.5, webapp: 4.5, prog: 1.5, sec: 5, tooling: 4.5 },
   stages: [
@@ -371,7 +371,7 @@ const DATA = {
       ]
     },
     {
-      id: "P9", name: "P9", fullName: "中间件与数据库", status: "active",
+      id: "P9", name: "P9", fullName: "中间件与数据库", status: "completed",
       topics: [
         { id: "redis-unauth", name: "Redis未授权", status: "passed", date: "07-30" },
         { id: "mw-overview", name: "中间件共性", status: "passed", date: "07-31" },
@@ -379,14 +379,21 @@ const DATA = {
       ]
     },
     {
-      id: "P10", name: "P10", fullName: "方法论与综合", status: "locked",
+      id: "P10", name: "P10", fullName: "方法论与综合", status: "active",
       topics: [
-        { id: "p10", name: "...", status: "locked" }
+        { id: "methodology", name: "方法论串联", status: "in_progress", date: "08-02" },
+        { id: "capstone-lab", name: "综合靶场通关", status: "in_progress", date: "08-02" }
       ]
     }
   ],
   // 时间线事件
   timeline: [
+    {
+      date: "2026-08-02", day: "02", weekday: "周日",
+      events: [
+        { type: "stage", text: "🎯 P10 方法论与综合 启动 — 综合靶场 SecBlog v1.0 上线(:5010)，多漏洞/不提示位置/需信息收集+组合利用，分层 FLAG 验收(require_transfer)", pts: "" }
+      ]
+    },
     {
       date: "2026-07-31", day: "31", weekday: "周五",
       events: [
