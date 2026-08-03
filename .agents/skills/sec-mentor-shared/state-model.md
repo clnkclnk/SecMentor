@@ -2,8 +2,8 @@
 
 权威课程数据：同目录 [curriculum.yaml](curriculum.yaml)。  
 进度摘要：`learner/progress.json`（保持小）。  
-完整事件：`learner/events/YYYY-MM.jsonl`（只追加）。  
-证据文件：`learner/evidence/<evidence_id>.*`（可选附件）。
+完整事件：`learner/events/YYYY-MM.jsonl`（只追加，每行一事件）。  
+证据文件：`learner/evidence/<evidence_id>.*`（passed 必须落盘——见下「证据可追溯」）。
 
 ## Topic 状态机
 
@@ -37,9 +37,11 @@ locked → available → in_progress → partial | passed | failed
 | `apply` | 能完成同类任务 | **是（基础通过）** |
 | `transfer` | 能处理陌生变体 | 是；核心 topic 建议必备 |
 
-## 证据对象（写入 evidence 文件或嵌在事件里）
+## 证据对象（写入 evidence 文件 或 jsonl evidence_recorded 事件）
 
 每条证据必须能区分「自述」与「观察到的输出」。
+
+**证据可追溯（硬规则）**：`evidence_ids` 里的每个 id 必须可追溯——要么对应 `learner/evidence/<id>.*` 真实文件，要么对应 jsonl 里一条 `evidence_recorded` 事件（含完整证据对象）。**禁止只往 `evidence_ids` 塞 id 而不落盘**；`scripts/validate_progress.py` 会检出悬空 id 并阻断继续教学。
 
 ```json
 {
@@ -85,11 +87,14 @@ locked → available → in_progress → partial | passed | failed
 
 ## 事件写入（无脚本时由 Agent 手写，须遵守）
 
-1. 追加一行到 `learner/events/YYYY-MM.jsonl`（当月文件）。  
-2. 把同一事件摘要 push 进 `progress.recent_events`，保留最多 20 条。  
-3. 更新 `progress.updated_at`。  
+1. 追加一行到 `learner/events/YYYY-MM.jsonl`（当月文件，**与 recent_events 同一事件用同一 ts**）。  
+2. 把同一事件摘要 push 进 `progress.recent_events`，保留最多 20 条，每条必须含 `type`/`ts`/`summary`。  
+3. 更新 `progress.updated_at`（不得落后于 recent_events 最新 ts）。  
 4. **禁止**把全部历史塞回 `progress.json`。
 5. `topic_id` 用 `curriculum.yaml` 里的 topics key；要拆分/合并就登记到 `path.planned_topics` 并注明替代的原 topic。临场自编 id（如 `web-http`）会让进度和课纲对不上，后续难追踪。
+6. 写完跑 `python3 scripts/validate_progress.py`，**fail 先修后教**——它校验 jsonl/recent_events 成对、evidence 落盘、updated_at、motivation 自洽等，不靠弱模型自觉。
+
+**字段命名（全文统一）**：事件时间字段用 `ts`；stage 完成用 `status:"completed"`；topic 完成时间用 `completed_at`；摸底 `scores` 用 mastery 字符串。`progress.schema.json` 是权威结构。
 
 事件类型示例：`placement_completed` / `topic_passed` / `topic_failed` / `evidence_recorded` / `daily_review` / `remediation_started`。
 

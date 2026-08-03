@@ -29,12 +29,13 @@
 | apply | 2.5 |
 | transfer | 3 |
 
-旧字段 `score` 0～3 **停用**；用 `mastery` + `evidence_ids`。
+topic 打分用 `mastery` + `evidence_ids`。
 
 ## Agent 自检（写 passed 前）
 
 - [ ] 证据不是「学员说会了」一句话  
-- [ ] 有可贴回的输出/现象描述（或 artifact 路径）  
+- [ ] 有可贴回的输出/现象描述，且 `evidence_id` 对应真实文件或 jsonl `evidence_recorded` 事件（不能只填 id）  
 - [ ] 未在本轮提供完整通关答案后立即标 passed  
 - [ ] 依赖 topic 已 passed/waived  
-- [ ] 已追加 events jsonl 并更新 recent_events  
+- [ ] 已追加 events jsonl（同一 ts）并更新 recent_events + updated_at  
+- [ ] 写完跑 `scripts/validate_progress.py` 通过（fail 先修后教）  

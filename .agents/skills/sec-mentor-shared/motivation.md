@@ -50,7 +50,7 @@
 | 1900–2599 | 6 | 独当一面 |
 | 2600+ | 7 | 行家里手 |
 
-零基础学一两周停在 level 2 是正常的，别急着往上报。启动时若 `level`/`title` 与 `points_total` 不符，按本表重算（只校正档位，不加分不减分）。
+零基础学一两周停在 level 2 是正常的，别急着往上报。启动时若 `level`/`title` 与 `points_total` 不符，按本表重算（只校正档位，不加分不减分）；`scripts/validate_progress.py` 会自动检出不符并提示。与实际不符的 `pending_celebration`（其 `points_total` 对不上）一并置 null 或重发。
 
 升级时必须触发庆祝（见下）。鼓励用语可带一点江湖味，但别油腻，仍要说清加分原因。
 

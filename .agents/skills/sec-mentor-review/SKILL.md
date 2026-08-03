@@ -13,10 +13,11 @@ description: >-
 2. 更新 `path.still_fuzzy`  
 3. 结算当日学习分（motivation.md：+5/天等），报「今日分 / 总分 / 称号」  
 4. 追加 `daily_review` 到 `learner/events/YYYY-MM.jsonl`  
-5. `recent_events` 推入摘要（≤20）  
+5. `recent_events` 推入摘要（≤20，每条含 type/ts/summary）  
 6. 写 `learner/journal/YYYY-MM-DD.md`（可含当日积分）  
 7. **不要**把全文复盘塞进 progress  
 8. 有里程碑/升级 → 生成庆祝 HTML（ui Skill）  
+9. 跑 `python3 scripts/validate_progress.py`，fail 先修——确保 jsonl/recent_events 成对、evidence 落盘、称号自洽，session 收尾留干净数据  
 
 ## 每周
 
@@ -27,5 +28,5 @@ description: >-
 jsonl 一行：
 
 ```json
-{"type":"daily_review","at":"2026-07-17T21:00:00+08:00","summary":"http-basics 实验完成，Cookie 仍模糊","topics_touched":["http-basics"],"minutes":55}
+{"type":"daily_review","ts":"2026-07-17T21:00:00+08:00","summary":"http-basics 实验完成，Cookie 仍模糊","topics_touched":["http-basics"],"minutes":55}
 ```

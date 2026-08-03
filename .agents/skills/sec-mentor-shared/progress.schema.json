@@ -36,10 +36,10 @@
         "profile": { "type": "object" },
         "scores": {
           "type": "object",
+          "description": "摸底各维度掌握层级（mastery 字符串）",
           "additionalProperties": {
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 3
+            "type": "string",
+            "enum": ["none", "recall", "understand", "apply", "transfer"]
           }
         },
         "summary": { "type": "string" },
@@ -118,7 +118,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "enum": ["locked", "available", "in_progress", "done"]
+            "enum": ["locked", "available", "in_progress", "completed"]
           },
           "topics": {
             "type": "object",
@@ -154,7 +154,7 @@
                   "type": "array",
                   "items": { "type": "string" }
                 },
-                "passed_at": { "type": ["string", "null"] },
+                "completed_at": { "type": ["string", "null"] },
                 "notes": { "type": "string" },
                 "micro": {
                   "type": "boolean",
@@ -208,14 +208,14 @@
     "last_weekly_review": { "type": ["string", "null"] },
     "recent_events": {
       "type": "array",
-      "description": "最近少量事件摘要；完整事件在 learner/events/*.jsonl",
+      "description": "最近少量事件摘要；完整事件在 learner/events/*.jsonl。每条 ts 必须能在 jsonl 找到对应行（由 scripts/validate_progress.py 校验成对性）",
       "maxItems": 20,
       "items": {
         "type": "object",
-        "required": ["type", "at"],
+        "required": ["type", "ts", "summary"],
         "properties": {
           "type": { "type": "string" },
-          "at": { "type": "string" },
+          "ts": { "type": "string", "description": "ISO8601 时间戳，须与 jsonl 对应行一致" },
           "summary": { "type": "string" },
           "topics_touched": {
             "type": "array",

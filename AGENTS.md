@@ -24,7 +24,7 @@
 
 1. 本文件 + adapter  
 2. `.agents/skills/sec-mentor-core/SKILL.md`  
-3. `learner/progress.json`；事件在 `learner/events/*.jsonl`  
+3. `learner/progress.json`；事件在 `learner/events/*.jsonl`；**读后跑 `scripts/validate_progress.py`，fail 先修进度再开课**  
 4. `active_failure` → 先补课  
 5. placement 未完成 → `sec-mentor-placement`  
 6. 否则 → `sec-mentor-stages`；有 `path.domain` / 学员点名新领域 → 先按 `path-planning.md` 规划再教  
@@ -46,6 +46,7 @@
 | `labs/` | 可选示例（covers 标签），非硬依赖 |
 | `adapters/` | 产品薄适配 |
 | `learner/` | progress / events / evidence / journal |
+| `scripts/` | **validate_progress.py**——进度完整性兜底校验 |
 
 ## 3. 硬规则
 
@@ -57,6 +58,7 @@
 6. **纵向项目** 留产物。  
 7. **聊天答题优先**；积分有证据才加。  
 8. 合法边界：本地/授权靶场；优先 `127.0.0.1`。
+9. **进度完整性**：写进度后跑 `scripts/validate_progress.py`，fail 先修后教——机器兜底，不靠弱模型自觉（jsonl/recent_events 成对、evidence 落盘、称号自洽）。
 
 ## 4. 真正值得盯的（旁观第一周）
 

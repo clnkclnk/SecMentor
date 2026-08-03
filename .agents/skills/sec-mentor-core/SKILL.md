@@ -26,19 +26,22 @@ description: >-
 
 1. Adapter：`adapters/generic.md` 或用户指定产品文件  
 2. 读 `learner/progress.json`  
-3. `active_failure` → 先 remediation  
-4. placement 未完成 → `sec-mentor-placement`  
-5. 否则 → `sec-mentor-stages`  
-6. 若学员要学的领域不在默认 YAML（如云安全）：按 `path-planning.md` **生成 planned_topics + 阅读清单并授课**，禁止只说「没有这条轨道」  
-7. 环境 → `sec-mentor-toolkit`；复盘 → `sec-mentor-review`；展示 → `sec-mentor-ui`
+3. **跑 `python3 scripts/validate_progress.py`**：若 fail，先把进度修合规再开课（补 jsonl / 补 evidence 文件 / 重算称号），别在坏数据上继续教  
+4. **motivation 自洽**：若 `level`/`title` 与 `points_total` 不符（按 motivation.md 表），或 `pending_celebration.points_total` 与实际不符，启动时按表重算（只校正档位，不加分不减分；不符的 `pending_celebration` 置 null 或重发）  
+5. `active_failure` → 先 remediation  
+6. placement 未完成 → `sec-mentor-placement`  
+7. 否则 → `sec-mentor-stages`  
+8. 若学员要学的领域不在默认 YAML（如云安全）：按 `path-planning.md` **生成 planned_topics + 阅读清单并授课**，禁止只说「没有这条轨道」  
+9. 环境 → `sec-mentor-toolkit`；复盘 → `sec-mentor-review`；展示 → `sec-mentor-ui`
 
 ## 写进度时
 
-1. 改 `progress.json` 摘要字段  
-2. **追加** `learner/events/YYYY-MM.jsonl` 一行 JSON  
-3. 更新 `recent_events`（≤20）  
-4. 证据写入 `evidence_ids` + 可选 `learner/evidence/<id>.*`  
+1. 改 `progress.json` 摘要字段（**含 `updated_at`**，不得落后于最新事件 ts）  
+2. **追加** `learner/events/YYYY-MM.jsonl` 一行 JSON（与 recent_events 同一 ts）  
+3. 更新 `recent_events`（≤20，每条含 `type`/`ts`/`summary`）  
+4. **证据落盘**：`evidence_ids` 里每个 id 必须对应真实文件或 jsonl `evidence_recorded` 事件（禁只塞 id 不写文件）  
 5. `passed` 前对照 assessment-rubric 自检清单  
+6. 跑 `python3 scripts/validate_progress.py`，**fail 先修后教**  
 
 ## 红线（摘要）
 
@@ -53,7 +56,7 @@ description: >-
 
 ## 收尾
 
-当日 session 结束前走一遍 `sec-mentor-review`：写 `learner/journal/YYYY-MM-DD.md` + 追加 `daily_review` 事件 + 推 `recent_events` + 更新 `still_fuzzy`。这样新 session 才能续上「今天卡哪、什么还模糊」，而不只看到通过流水。
+当日 session 结束前走一遍 `sec-mentor-review`：写 `learner/journal/YYYY-MM-DD.md` + 追加 `daily_review` 事件 + 推 `recent_events` + 更新 `still_fuzzy`。**最后再跑一次 `scripts/validate_progress.py` 确保 progress 落盘合规**。这样新 session 才能续上「今天卡哪、什么还模糊」，而不只看到通过流水。
 
 ## Examples
 
