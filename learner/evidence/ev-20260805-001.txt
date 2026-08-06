@@ -1,0 +1,14 @@
+TechShop SQL注入进阶靶场通关证据
+日期: 2026-08-05
+独立性: guided (搜索框+UNION部分引导，登录绕过独立完成)
+靶场: labs/techshop-lab.py (端口5020)
+
+3/3 FLAG:
+1. sqli_search_leaked_2026 - 搜索框单引号报错触发
+2. sqli_product_detail_2026 - UNION SELECT 偷 secrets 表数据
+3. sqli_login_bypass_2026 - 登录绕过 (用户独立完成，payload: %' OR 1=1 OR '1'='1)
+
+关键学习点:
+- 搜索框 LIKE 用 % 通配符 vs 登录框 = 精确匹配，payload 需根据 SQL 模板调整
+- UNION 偷数据流程: 查表名→排优先级→查表结构→查数据
+- 登录绕过最优解: admin'-- (6字符) 或 ' OR 1=1-- (注释掉密码检查)

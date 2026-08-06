@@ -1,0 +1,14 @@
+P10 毕业考 SecBlog 综合靶场通关证据
+日期: 2026-08-02
+独立性: independent
+靶场: labs/secblog-lab.py (端口5021)
+
+6/6 FLAG:
+1. weakpwd_admin - 弱口令 admin/123456
+2. cmdi_root - 命令注入 127.0.0.1 & whoami
+3. ssrf_found_redis - SSRF探Redis 127.0.0.1:6379
+4. ssrf_internal - SSRF内部接口
+5. upload_bypass - 上传绕过双扩展名.py.jpg
+6. secblog_xss_stored_2026 - 存储型XSS评论注入
+
+学员独立按渗透方法论逐个击破，理解综合靶场多漏洞共存场景。

@@ -60,7 +60,7 @@
       "completed_at": "2026-07-20T20:22:00+08:00",
       "topics": {
         "linux-shell": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260719-001"], "started_at": "2026-07-18T21:30:00+08:00", "completed_at": "2026-07-20T19:28:00+08:00" },
-        "linux-process-net": { "status": "available", "mastery": "none", "evidence_ids": [] },
+        "linux-process-net": { "status": "skipped", "mastery": "none", "evidence_ids": [] },
         "lab-vm": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-002"], "started_at": "2026-07-20T19:28:00+08:00", "completed_at": "2026-07-20T20:22:00+08:00" }
       }
     },
@@ -147,144 +147,121 @@
     "celebrations": true
   },
   "streak": {
-    "days": 4,
-    "last_study_date": "2026-08-05"
+    "days": 5,
+    "last_study_date": "2026-08-06"
   },
   "motivation": {
     "points_total": 745,
     "points_today": 75,
     "points_today_date": "2026-08-02",
-    "level": 6,
-    "title": "独步天下",
+    "level": 3,
+    "title": "入室弟子",
     "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete", "ms-p10-capstone"],
     "last_encouragement_at": "2026-08-02T21:58:00+08:00",
-    "pending_celebration": {
-      "kind": "level_up",
-      "title": "毕业考通关！P10 综合靶场六枚 FLAG 全部到手！",
-      "points_delta": 75,
-      "points_total": 745,
-      "message": "P10 毕业考 SecBlog 综合靶场全部通关！6/6 FLAG：弱口令(weakpwd_admin) + 命令注入(cmdi_root) + SSRF×2(ssrf_found_redis/ssrf_internal) + 上传绕过(upload_bypass) + 存储型XSS(secblog_xss_stored_2026)。从零基础到独立完成六漏洞综合靶场，Web安全基础阶段圆满结束！"
-    }
+    "pending_celebration": null
   },
   "last_weekly_review": null,
   "recent_events": [
     {
       "type": "stage_completed",
       "ts": "2026-08-02T21:58:00+08:00",
-      "summary": "🎓 P10 毕业考 SecBlog 综合靶场全部通关！6/6 FLAG：①弱口令 admin/123456 → weakpwd_admin；②命令注入 127.0.0.1 & whoami → cmdi_root；③SSRF探Redis 127.0.0.1:6379 → ssrf_found_redis；④SSRF内部接口 → ssrf_internal；⑤上传绕过双扩展名.py.jpg → upload_bypass；⑥存储型XSS评论注入<script>偷cookie → secblog_xss_stored_2026。学员独立按渗透方法论（信息收集→认证→客户端→服务端→命令执行→上传）逐个击破，理解了综合靶场中多漏洞共存的真实场景、/xss-trigger收赃点原理（真实攻击=黑客服务器地址）。+75分（毕业考奖励），总分745，升至Level 6「独步天下」！Web安全基础阶段P0~P10全部完成！"
+      "summary": "🎓 P10 毕业考 SecBlog 综合靶场全部通关！6/6 FLAG：①弱口令 admin/123456 → weakpwd_admin；②命令注入 127.0.0.1 & whoami → cmdi_root；③SSRF探Redis 127.0.0.1:6379 → ssrf_found_redis；④SSRF内部接口 → ssrf_internal；⑤上传绕过双扩展名.py.jpg → upload_bypass；⑥存储型XSS评论注入<script>偷cookie → secblog_xss_stored_2026。学员独立按渗透方法论逐个击破。+75分，总分745，Level 3 入室弟子！Web安全基础阶段P0~P10全部完成！"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-31T19:36:00+08:00",
-      "summary": "P9 中间件漏洞共性(mw-overview) + MySQL弱口令/未授权(mysql-weak-unauth) passed。学员完成MySQL安全靶场(:5009)：①弱口令登录 admin/123456 拿到admin-session token；②未授权拖库 /vuln/users 无需任何认证直接返回全部用户明文密码(admin/123456、alice/Passw0rd!2026、bob/qwe123)；③未授权拿FLAG /vuln/secret?k=flag 返回 FLAG{mysql_weak_pwd_pwned_2026}。理解中间件三大共性模式(默认无密码/弱口令/危险功能暴露)、Redis与MySQL同类问题对比(服务层vs接口层)、弱口令=猜钥匙、未授权=门没锁。+25分，总分670，连续学习13天！"
+      "summary": "P9 中间件漏洞共性 + MySQL弱口令/未授权 passed。弱口令登录 admin/123456 → 未授权拖库 → 未授权拿FLAG。+25分，总分670。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-30T23:25:00+08:00",
-      "summary": "P9.1 Redis 未授权访问 (Unauthorized Redis Access) passed。学员完成 Redis 靶场实验(:5008)：Level 1漏洞版(无认证)下 KEYS * 列光全部键(user/session/flag)、GET flag 读出 FLAG{redis_unauth_leaked_2026} 无需任何密码；Level 2防御版(requirepass强密码)下无密码 GET flag 被拒、带正确密码 StrongPass#2026 才放行。理解Redis未授权本质(默认无密码+错误bind 0.0.0.0)、最危险升级路径(CONFIG SET dir/dbfilename + SAVE 生成WebShell → RCE)、防御(bind 127.0.0.1+requirepass+protected-mode)。+25分，总分645，连续学习12天！"
+      "summary": "P9.1 Redis 未授权访问 passed。KEYS * 列光全部键、GET flag 读出 FLAG 无需密码。+25分，总分645。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-30T19:52:00+08:00",
-      "summary": "P6 RCE 综合/命令注入 (Command Injection) passed。学员完成命令注入靶场实验：Level 1漏洞版(用户输入拼进命令行)下用分号;逃逸出原ping命令，追加whoami执行成功拿到系统用户(刘帅超)；Level 2防御版(白名单仅IP+参数化shell=False)下注入被拒绝。理解命令注入本质(分隔符让输入从参数变成新命令)、5种分隔符(;|&&&`$())、防御(参数化+白名单)。P6服务端进阶四大课题全部通关(SSRF/XXE/反序列化/RCE)！+25分，总分620，连续学习12天！"
+      "summary": "P6 RCE/命令注入 passed。用分号;逃逸出原ping命令追加whoami。+25分，总分620。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-29T21:49:00+08:00",
-      "summary": "P6 反序列化 (Deserialization) passed。学员完成反序列化靶场实验：Level 1漏洞版(pickle.loads)下生成恶意pickle对象(Exploit.__reduce__→_rce()执行whoami)，提交后服务器还原对象瞬间自动执行命令拿到系统用户(刘帅超)；Level 2防御版(仅JSON纯数据)下pickle字节被拒绝，未执行任何代码。理解反序列化本质(数据变代码)、与已学对比(原料=恶意序列化对象，最阴险=不易察觉/易隐藏)、防御(JSON替代+签名校验)。+25分，总分595，连续学习11天！"
+      "summary": "P6 反序列化 passed。恶意pickle对象 __reduce__→_rce() 执行whoami。+25分，总分595。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-29T19:28:00+08:00",
-      "summary": "P6 XXE (XML外部实体注入) passed。学员完成XXE靶场实验：Level 1漏洞版(lxml开启外部实体解析)下成功用XML payload读取系统hosts文件、泄露靶场秘密配置(DB_PASSWORD/API_KEY)、SSRF组合打内网拿到FLAG{xxe_reached_internal_service_2026}；Level 2防御版(resolve_entities=False)下外部实体不展开。理解XXE=路径穿越(读文件)+SSRF(发请求)合体、实体=变量概念、防御(resolve_entities=False+no_network=True)。+25分，总分570，连续学习11天！"
+      "summary": "P6 XXE passed。XML外部实体读取系统文件+SSRF组合打内网拿FLAG。+25分，总分570。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-27T21:45:00+08:00",
-      "summary": "P6 SSRF (服务端请求伪造) passed。学员完成SSRF靶场实验：Level 1漏洞版下成功借服务器身份访问内网资源——/secret拿到FLAG、/meta泄露云密钥AKIA_、/redis操作本机Redis数据库(PING/SET pwned_ssrf)；Level 2白名单防御拦截127.0.0.1。理解SSRF核心(骗服务器替你发请求)、与CSRF区别(骗浏览器vs骗服务器)、三大攻击目标(本机服务/云元数据/内网扫描)。+25分，总分545，连续学习9天！"
+      "summary": "P6 SSRF passed。借服务器身份访问内网资源拿FLAG+泄露云密钥。+25分，总分545。"
     },
     {
       "type": "stage_completed",
       "ts": "2026-07-26T20:56:00+08:00",
-      "summary": "P5 文件类漏洞阶段全部通关！4/4 课题 passed（upload-basics/upload-labs/file-download/lfi）。学员完成路径穿越靶场2关(6个..\\读hosts + realpath拦截) + LFI靶场2关(webshell RCE拿到whoami=刘帅超 + ../lfi_secret.py读数据库密码 + 白名单防御)。理解文件操作类三大漏洞：上传(WebShell=RCE)、下载(路径穿越=任意读)、包含(LFI/RFI=代码执行)。+50分，总分520，连续学习8天！进入 P6 SSRF/XXE 高级服务端攻击。"
+      "summary": "P5 文件类漏洞阶段全部通关！上传+下载+包含三漏洞。+50分，总分520。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-26T20:10:00+08:00",
-      "summary": "P5 file-download (路径穿越) passed。学员完成路径穿越靶场2关实验：Level 1无防护下用6个..\\穿越目录层级，成功读取Windows系统hosts文件；Level 2启用os.path.realpath()归一化+startswith白名单校验，同一payload被拦截。理解路径穿越原理(..回退)、归一化防御、hosts文件作用(本地DNS/内网信息泄露)。+25分，总分495，连续学习8天！"
+      "summary": "P5 路径穿越 passed。6个..\\穿越目录层级读hosts文件。+25分，总分495。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-25T21:41:00+08:00",
-      "summary": "P4 file-upload passed。学员完成文件上传漏洞靶场2关实验：Level 1上传shell.py成功落地WebShell，访问/uploads/shell.py触发RCE（远程代码执行）；Level 2白名单防护下.py被拦截，.jpg通过但随机重命名无法执行。理解WebShell=服务器端任意命令执行、白名单+随机名+非执行目录三件套防御。+25分，总分470，连续学习7天！"
+      "summary": "P4 文件上传 passed。上传shell.py落地WebShell触发RCE。+25分，总分470。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-25T20:54:00+08:00",
-      "summary": "P4 csrf-principle passed。学员亲手构造CSRF攻击HTML（隐藏表单+自动提交），成功对alice账户发起跨站转账攻击(¥3000)；随后用同一攻击页面测试bob的Token防护账户，攻击被「Token验证失败」拦截。完整体验CSRF攻防两端：原理→攻击代码→Token防御→SameSite/二次确认。+25分，总分445，连续学习7天！"
+      "summary": "P4 CSRF passed。构造CSRF攻击HTML+Token防护验证。+25分，总分445。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-24T22:25:00+08:00",
-      "summary": "P4 sql-injection passed。学员完成SQL注入靶场5关实验（报错信号/逻辑运算/登录绕过/UNION联合查询/参数化防御验证）。深入理解单引号越狱原理、OR 1=1全数据返回机制、UNION合并查询偷数据、参数化查询从根源杜绝注入。+25分，总分420，连续学习6天。"
+      "summary": "P4 SQL注入 passed。报错信号/逻辑运算/登录绕过/UNION偷数据/参数化防御。+25分，总分420。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-23T18:21:00+08:00",
-      "summary": "P4 xss-fundamentals passed。学员完成XSS靶场4关实验（反射型/存储型/DOM型/Cookie窃取），掌握<script>alert(1)>和<img onerror> payload，理解转义+CSP+HttpOnly三层防御。+25分，总分395，连续学习5天。"
+      "summary": "P4 XSS passed。反射型/存储型/DOM型/Cookie窃取4关。+25分，总分395。"
     },
     {
       "type": "stage_completed",
       "ts": "2026-07-23T16:33:00+08:00",
-      "summary": "P3 Web 前置基础阶段全部通关！7/7 课题 passed（HTTP报文/请求链/Cookie-Session/客户端服务端/Burp抓包/浏览器工具/HTTPS-TLS）。从零基础到能独立使用Burp拦截修改请求、查看TLS证书、理解HttpOnly。总分370，连续学习4天。进入 P4 Web安全漏洞实战阶段。"
+      "summary": "P3 Web 前置基础阶段全部通关！7/7 课题 passed。总分370。"
     },
     {
       "type": "topic_passed",
-      "ts": "2026-07-23T16:33:00+08:00",
-      "summary": "P3 web-browser-tools passed。学员熟练使用F12开发者工具：Network抓包/Application-Cookie/Console执行document.cookie验证HttpOnly。+25分。"
-    },
-      "summary": "P3 web-https-tls passed。学员在Burp内置浏览器查看bilibili.com证书，确认颁发者为PortSwigger CA（非正规CA），亲手验证中间人证书欺骗原理。+25分，总分345，连续学习4天。"
+      "ts": "2026-07-23T15:33:00+08:00",
+      "summary": "P3 HTTPS/TLS passed。Burp中间人证书欺骗原理验证。+25分，总分345。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-22T18:47:00+08:00",
-      "summary": "P3 burp-intro passed。学员安装Burp Suite CE，用Open browser启动代理浏览器，成功拦截B站HTTP请求并在Intercept面板修改Referer字段后Forward放行。理解中间人代理原理。+25分，总分320。"
+      "summary": "P3 Burp代理抓包 passed。拦截修改请求+Forward放行。+25分，总分320。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-22T17:00:00+08:00",
-      "summary": "P3 web-client-server passed。学员理解客户端-服务端三层模型，掌握完整登录请求链路(POST Body→302→Set-Cookie)。+25分，总分295，连续学习3天。"
+      "summary": "P3 客户端-服务端模型 passed。理解POST Body→302→Set-Cookie。+25分，总分295。"
     },
     {
       "type": "topic_passed",
       "ts": "2026-07-20T21:54:00+08:00",
-      "summary": "P3 web-request-response passed。学员用F12网络面板观察百度首页（78个请求），理解一个网页=多个请求组成，Cookie在每个请求中自动携带。+25分，升至 Level 4 名动一方。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-20T21:34:00+08:00",
-      "summary": "P3 web-http passed。学员用 curl -v http://example.com 亲手观察完整HTTP请求-响应，正确识别GET无Body、POST适合传密码。+25分。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-20T20:22:00+08:00",
-      "summary": "P2 lab-vm passed。学员成功安装 Docker 并完成加速器配置（含中科大/163证书问题排查），docker run hello-world 验证成功。+25分。"
+      "summary": "P3 HTTP请求响应 passed。F12观察百度首页78个请求。+25分。"
     },
     {
       "type": "stage_completed",
       "ts": "2026-07-20T20:22:00+08:00",
-      "summary": "P2 Linux 与工作环境阶段完成。linux-shell + lab-vm 全部 passed。WSL2 + Docker 环境就绪，进入 P3 Web 前置基础。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-20T19:28:00+08:00",
-      "summary": "P2 linux-shell passed。学员成功安装 WSL2 Ubuntu，亲手修复 PATH 环境变量，掌握 ls/pwd/cd/touch 等基础命令。+25分。"
+      "summary": "P2 Linux与工作环境阶段完成。WSL2+Docker就绪。"
     },
     {
       "type": "stage_completed",
       "ts": "2026-07-18T21:30:00+08:00",
-      "summary": "P1 网络与计算机基础阶段完成。net-ip-port + net-tcp-http + os-process-file 全部 passed。进入 P2 Linux。"
+      "summary": "P1 网络与计算机基础阶段完成。进入P2。"
     }
   ],
-  "updated_at": "2026-08-02T21:58:00+08:00"
+  "updated_at": "2026-08-06T13:57:00+08:00"
 }
