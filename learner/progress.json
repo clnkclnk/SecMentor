@@ -32,7 +32,20 @@
     "mode": "steady",
     "focus_next_week": [],
     "skipped_topics": [],
-    "still_fuzzy": []
+    "still_fuzzy": [],
+    "advanced_topics": [
+      "sqli-advanced",
+      "blind-sqli",
+      "ssti",
+      "ssti-advanced",
+      "race-conditions",
+      "race-advanced",
+      "ssrf",
+      "ssrf-advanced",
+      "xss-advanced",
+      "csrf"
+    ],
+    "current_advanced": "file-upload-advanced"
   },
   "current_stage": "P10",
   "current_topic": "capstone",
@@ -42,26 +55,81 @@
       "status": "completed",
       "completed_at": "2026-07-18T16:52:00+08:00",
       "topics": {
-        "ethics-scope": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260718-001"], "completed_at": "2026-07-18T16:48:00+08:00" },
-        "learning-loop": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260718-002"], "completed_at": "2026-07-18T16:52:00+08:00" }
+        "ethics-scope": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260718-001"
+          ],
+          "completed_at": "2026-07-18T16:48:00+08:00"
+        },
+        "learning-loop": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260718-002"
+          ],
+          "completed_at": "2026-07-18T16:52:00+08:00"
+        }
       }
     },
     "P1": {
       "status": "completed",
       "completed_at": "2026-07-18T21:30:00+08:00",
       "topics": {
-        "net-ip-port": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260718-003"], "completed_at": "2026-07-18T18:50:00+08:00" },
-        "net-tcp-http": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260718-004"], "completed_at": "2026-07-18T19:12:00+08:00" },
-        "os-process-file": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260718-005"], "completed_at": "2026-07-18T21:30:00+08:00" }
+        "net-ip-port": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260718-003"
+          ],
+          "completed_at": "2026-07-18T18:50:00+08:00"
+        },
+        "net-tcp-http": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260718-004"
+          ],
+          "completed_at": "2026-07-18T19:12:00+08:00"
+        },
+        "os-process-file": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260718-005"
+          ],
+          "completed_at": "2026-07-18T21:30:00+08:00"
+        }
       }
     },
     "P2": {
       "status": "completed",
       "completed_at": "2026-07-20T20:22:00+08:00",
       "topics": {
-        "linux-shell": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260719-001"], "started_at": "2026-07-18T21:30:00+08:00", "completed_at": "2026-07-20T19:28:00+08:00" },
-        "linux-process-net": { "status": "skipped", "mastery": "none", "evidence_ids": [] },
-        "lab-vm": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-002"], "started_at": "2026-07-20T19:28:00+08:00", "completed_at": "2026-07-20T20:22:00+08:00" }
+        "linux-shell": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260719-001"
+          ],
+          "started_at": "2026-07-18T21:30:00+08:00",
+          "completed_at": "2026-07-20T19:28:00+08:00"
+        },
+        "linux-process-net": {
+          "status": "skipped",
+          "mastery": "none",
+          "evidence_ids": []
+        },
+        "lab-vm": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260720-002"
+          ],
+          "started_at": "2026-07-20T19:28:00+08:00",
+          "completed_at": "2026-07-20T20:22:00+08:00"
+        }
       }
     },
     "P4": {
@@ -69,23 +137,111 @@
       "completed_at": "2026-07-25T21:41:00+08:00",
       "started_at": "2026-07-23T17:00:00+08:00",
       "topics": {
-        "xss-fundamentals": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-003"], "started_at": "2026-07-23T17:00:00+08:00", "completed_at": "2026-07-23T18:21:00+08:00" },
-        "sql-injection": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260724-001"], "started_at": "2026-07-24T20:30:00+08:00", "completed_at": "2026-07-24T22:25:00+08:00" },
-        "auth-basics": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
-        "brute-logic": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
-        "burp-intruder": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260725-001"], "started_at": "2026-07-24T22:30:00+08:00", "completed_at": "2026-07-25T17:02:00+08:00" },
-        "csrf-principle": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-002"], "started_at": "2026-07-25T17:03:00+08:00", "completed_at": "2026-07-25T20:54:00+08:00" },
-        "file-upload": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "started_at": "2026-07-25T21:10:00+08:00", "completed_at": "2026-07-25T21:41:00+08:00" }
+        "xss-fundamentals": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260723-003"
+          ],
+          "started_at": "2026-07-23T17:00:00+08:00",
+          "completed_at": "2026-07-23T18:21:00+08:00"
+        },
+        "sql-injection": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260724-001"
+          ],
+          "started_at": "2026-07-24T20:30:00+08:00",
+          "completed_at": "2026-07-24T22:25:00+08:00"
+        },
+        "auth-basics": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260725-001"
+          ],
+          "started_at": "2026-07-24T22:30:00+08:00",
+          "completed_at": "2026-07-25T17:02:00+08:00"
+        },
+        "brute-logic": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260725-001"
+          ],
+          "started_at": "2026-07-24T22:30:00+08:00",
+          "completed_at": "2026-07-25T17:02:00+08:00"
+        },
+        "burp-intruder": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260725-001"
+          ],
+          "started_at": "2026-07-24T22:30:00+08:00",
+          "completed_at": "2026-07-25T17:02:00+08:00"
+        },
+        "csrf-principle": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260725-002"
+          ],
+          "started_at": "2026-07-25T17:03:00+08:00",
+          "completed_at": "2026-07-25T20:54:00+08:00"
+        },
+        "file-upload": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260725-003"
+          ],
+          "started_at": "2026-07-25T21:10:00+08:00",
+          "completed_at": "2026-07-25T21:41:00+08:00"
+        }
       }
     },
     "P6": {
       "status": "completed",
       "started_at": "2026-07-26T20:57:00+08:00",
       "topics": {
-        "ssrf": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260727-001"], "started_at": "2026-07-26T20:57:00+08:00", "completed_at": "2026-07-27T21:45:00+08:00" },
-        "xxe": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260729-001"], "started_at": "2026-07-28T19:17:00+08:00", "completed_at": "2026-07-29T19:28:00+08:00" },
-        "deserialization": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260729-002"], "started_at": "2026-07-29T21:22:00+08:00", "completed_at": "2026-07-29T21:49:00+08:00" },
-        "rce": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-001"], "started_at": "2026-07-29T22:38:00+08:00", "completed_at": "2026-07-30T19:52:00+08:00" }
+        "ssrf": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260727-001"
+          ],
+          "started_at": "2026-07-26T20:57:00+08:00",
+          "completed_at": "2026-07-27T21:45:00+08:00"
+        },
+        "xxe": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260729-001"
+          ],
+          "started_at": "2026-07-28T19:17:00+08:00",
+          "completed_at": "2026-07-29T19:28:00+08:00"
+        },
+        "deserialization": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260729-002"
+          ],
+          "started_at": "2026-07-29T21:22:00+08:00",
+          "completed_at": "2026-07-29T21:49:00+08:00"
+        },
+        "rce": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260730-001"
+          ],
+          "started_at": "2026-07-29T22:38:00+08:00",
+          "completed_at": "2026-07-30T19:52:00+08:00"
+        }
       }
     },
     "P9": {
@@ -93,9 +249,33 @@
       "started_at": "2026-07-30T22:50:00+08:00",
       "completed_at": "2026-07-31T19:36:00+08:00",
       "topics": {
-        "redis-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260730-002"], "started_at": "2026-07-30T22:50:00+08:00", "completed_at": "2026-07-30T23:25:00+08:00" },
-        "mw-overview": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260731-001"], "started_at": "2026-07-31T16:40:00+08:00", "completed_at": "2026-07-31T19:36:00+08:00" },
-        "mysql-weak-unauth": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260731-001"], "started_at": "2026-07-31T16:40:00+08:00", "completed_at": "2026-07-31T19:36:00+08:00" }
+        "redis-unauth": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260730-002"
+          ],
+          "started_at": "2026-07-30T22:50:00+08:00",
+          "completed_at": "2026-07-30T23:25:00+08:00"
+        },
+        "mw-overview": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260731-001"
+          ],
+          "started_at": "2026-07-31T16:40:00+08:00",
+          "completed_at": "2026-07-31T19:36:00+08:00"
+        },
+        "mysql-weak-unauth": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260731-001"
+          ],
+          "started_at": "2026-07-31T16:40:00+08:00",
+          "completed_at": "2026-07-31T19:36:00+08:00"
+        }
       }
     },
     "P10": {
@@ -103,7 +283,15 @@
       "started_at": "2026-08-02T15:49:00+08:00",
       "completed_at": "2026-08-02T21:58:00+08:00",
       "topics": {
-        "capstone": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260802-p10"], "started_at": "2026-08-02T15:49:00+08:00", "completed_at": "2026-08-02T21:58:00+08:00" }
+        "capstone": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260802-p10"
+          ],
+          "started_at": "2026-08-02T15:49:00+08:00",
+          "completed_at": "2026-08-02T21:58:00+08:00"
+        }
       }
     },
     "P5": {
@@ -111,24 +299,118 @@
       "completed_at": "2026-07-26T20:56:00+08:00",
       "started_at": "2026-07-26T19:27:00+08:00",
       "topics": {
-        "upload-basics": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "completed_at": "2026-07-25T21:41:00+08:00" },
-        "upload-labs": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260725-003"], "completed_at": "2026-07-25T21:41:00+08:00" },
-        "file-download": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260726-001"], "started_at": "2026-07-26T19:27:00+08:00", "completed_at": "2026-07-26T20:10:00+08:00" },
-        "lfi": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260726-002"], "started_at": "2026-07-26T20:11:00+08:00", "completed_at": "2026-07-26T20:56:00+08:00" }
+        "upload-basics": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260725-003"
+          ],
+          "completed_at": "2026-07-25T21:41:00+08:00"
+        },
+        "upload-labs": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260725-003"
+          ],
+          "completed_at": "2026-07-25T21:41:00+08:00"
+        },
+        "file-download": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260726-001"
+          ],
+          "started_at": "2026-07-26T19:27:00+08:00",
+          "completed_at": "2026-07-26T20:10:00+08:00"
+        },
+        "lfi": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260726-002"
+          ],
+          "started_at": "2026-07-26T20:11:00+08:00",
+          "completed_at": "2026-07-26T20:56:00+08:00"
+        }
       }
     },
     "P3": {
       "status": "completed",
       "completed_at": "2026-07-23T16:33:00+08:00",
       "topics": {
-        "web-http": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260720-003"], "started_at": "2026-07-20T20:22:00+08:00", "completed_at": "2026-07-20T21:34:00+08:00" },
-        "web-request-response": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-004"], "started_at": "2026-07-20T21:34:00+08:00", "completed_at": "2026-07-20T21:54:00+08:00" },
-        "web-auth-state": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260720-005"], "started_at": "2026-07-20T21:54:00+08:00", "completed_at": "2026-07-20T22:37:00+08:00" },
-        "web-client-server": { "status": "passed", "mastery": "understand", "evidence_ids": ["ev-20260722-001"], "started_at": "2026-07-21T21:20:00+08:00", "completed_at": "2026-07-22T17:00:00+08:00" },
-        "web-proxy-intro": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260722-002"], "started_at": "2026-07-22T17:05:00+08:00", "completed_at": "2026-07-22T18:47:00+08:00" },
-        "web-browser-tools": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-002"], "started_at": "2026-07-23T15:40:00+08:00", "completed_at": "2026-07-23T16:33:00+08:00" },
-        "web-devtools": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-002"], "started_at": "2026-07-23T15:40:00+08:00", "completed_at": "2026-07-23T16:33:00+08:00" },
-        "web-https-tls": { "status": "passed", "mastery": "apply", "evidence_ids": ["ev-20260723-001"], "started_at": "2026-07-22T19:00:00+08:00", "completed_at": "2026-07-23T15:33:00+08:00" }
+        "web-http": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260720-003"
+          ],
+          "started_at": "2026-07-20T20:22:00+08:00",
+          "completed_at": "2026-07-20T21:34:00+08:00"
+        },
+        "web-request-response": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260720-004"
+          ],
+          "started_at": "2026-07-20T21:34:00+08:00",
+          "completed_at": "2026-07-20T21:54:00+08:00"
+        },
+        "web-auth-state": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260720-005"
+          ],
+          "started_at": "2026-07-20T21:54:00+08:00",
+          "completed_at": "2026-07-20T22:37:00+08:00"
+        },
+        "web-client-server": {
+          "status": "passed",
+          "mastery": "understand",
+          "evidence_ids": [
+            "ev-20260722-001"
+          ],
+          "started_at": "2026-07-21T21:20:00+08:00",
+          "completed_at": "2026-07-22T17:00:00+08:00"
+        },
+        "web-proxy-intro": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260722-002"
+          ],
+          "started_at": "2026-07-22T17:05:00+08:00",
+          "completed_at": "2026-07-22T18:47:00+08:00"
+        },
+        "web-browser-tools": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260723-002"
+          ],
+          "started_at": "2026-07-23T15:40:00+08:00",
+          "completed_at": "2026-07-23T16:33:00+08:00"
+        },
+        "web-devtools": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260723-002"
+          ],
+          "started_at": "2026-07-23T15:40:00+08:00",
+          "completed_at": "2026-07-23T16:33:00+08:00"
+        },
+        "web-https-tls": {
+          "status": "passed",
+          "mastery": "apply",
+          "evidence_ids": [
+            "ev-20260723-001"
+          ],
+          "started_at": "2026-07-22T19:00:00+08:00",
+          "completed_at": "2026-07-23T15:33:00+08:00"
+        }
       }
     }
   },
@@ -148,7 +430,7 @@
   },
   "streak": {
     "days": 5,
-    "last_study_date": "2026-08-06"
+    "last_study_date": "2026-08-13"
   },
   "motivation": {
     "points_total": 745,
@@ -156,12 +438,64 @@
     "points_today_date": "2026-08-02",
     "level": 3,
     "title": "入室弟子",
-    "milestones_unlocked": ["ms-first-login", "ms-p0-clear", "ms-first-passed", "ms-p3-level4", "ms-p3-complete", "ms-p10-capstone"],
+    "milestones_unlocked": [
+      "ms-first-login",
+      "ms-p0-clear",
+      "ms-first-passed",
+      "ms-p3-level4",
+      "ms-p3-complete",
+      "ms-p10-capstone"
+    ],
     "last_encouragement_at": "2026-08-02T21:58:00+08:00",
     "pending_celebration": null
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-13T19:00:00+08:00",
+      "summary": "CSRF 双站点靶场 4/4：GET转账img + POST表单自动提交 + no-referrer绕过 + 假token。完成攻击者侦查流程（F12/Python测Referer与token）。+进阶，P0~P10后第7个进阶专题"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-12T22:28:00+08:00",
+      "summary": "XSS 五块原理重学完成 + Verse 4/4 再验证。掌握反射/存储/DOM识别、六种过滤绕过、防御三层。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-11T19:00:00+08:00",
+      "summary": "XSS 进阶 Verse 4/4：反射 + 存储绕script + 存储绕事件 + DOM型。SSRF 重学四块原理。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-10T21:58:00+08:00",
+      "summary": "SSRF 进阶 NetPulse 4/4 逻辑链 + LinkPeek 3/3 + GameVault 条件竞争 4/4。生成学习方向全景图（32方向）。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-09T21:03:00+08:00",
+      "summary": "SSTI 进阶 MailForge 3/3（含WAF绕过）+ 条件竞争 FlashSale 3/3。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-07T22:31:00+08:00",
+      "summary": "SSTI WishBox 3/3：{{7*7}}→{{config}}→Python对象攀爬RCE。盲注第三关跳过（原理已掌握）。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-06T20:52:00+08:00",
+      "summary": "盲注进阶 BlindBox：布尔盲注 + 时间盲注原理掌握。修复 progress.json 完整性。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-05T21:30:00+08:00",
+      "summary": "SQL注入进阶 TechShop 3/3：UNION偷secrets + 登录绕过。"
+    },
+    {
+      "type": "advanced_topic_started",
+      "ts": "2026-08-03T20:29:00+08:00",
+      "summary": "货拉拉 SRC 启动：读测试规范 + Burp 配置 + 信息收集（发现 watch-dog/static/mdap-app 等子域名）。同步 SecMentor 框架到上游。"
+    },
     {
       "type": "stage_completed",
       "ts": "2026-08-02T21:58:00+08:00",
@@ -216,52 +550,7 @@
       "type": "topic_passed",
       "ts": "2026-07-25T20:54:00+08:00",
       "summary": "P4 CSRF passed。构造CSRF攻击HTML+Token防护验证。+25分，总分445。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-24T22:25:00+08:00",
-      "summary": "P4 SQL注入 passed。报错信号/逻辑运算/登录绕过/UNION偷数据/参数化防御。+25分，总分420。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-23T18:21:00+08:00",
-      "summary": "P4 XSS passed。反射型/存储型/DOM型/Cookie窃取4关。+25分，总分395。"
-    },
-    {
-      "type": "stage_completed",
-      "ts": "2026-07-23T16:33:00+08:00",
-      "summary": "P3 Web 前置基础阶段全部通关！7/7 课题 passed。总分370。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-23T15:33:00+08:00",
-      "summary": "P3 HTTPS/TLS passed。Burp中间人证书欺骗原理验证。+25分，总分345。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-22T18:47:00+08:00",
-      "summary": "P3 Burp代理抓包 passed。拦截修改请求+Forward放行。+25分，总分320。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-22T17:00:00+08:00",
-      "summary": "P3 客户端-服务端模型 passed。理解POST Body→302→Set-Cookie。+25分，总分295。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-20T21:54:00+08:00",
-      "summary": "P3 HTTP请求响应 passed。F12观察百度首页78个请求。+25分。"
-    },
-    {
-      "type": "stage_completed",
-      "ts": "2026-07-20T20:22:00+08:00",
-      "summary": "P2 Linux与工作环境阶段完成。WSL2+Docker就绪。"
-    },
-    {
-      "type": "stage_completed",
-      "ts": "2026-07-18T21:30:00+08:00",
-      "summary": "P1 网络与计算机基础阶段完成。进入P2。"
     }
   ],
-  "updated_at": "2026-08-06T13:57:00+08:00"
+  "updated_at": "2026-08-13T21:47:00+08:00"
 }
