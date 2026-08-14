@@ -13,3 +13,5 @@
 {"type": "advanced_topic_passed", "ts": "2026-08-13T19:00:00+08:00", "data": {"topic": "csrf", "lab": "BankVault+Evil", "flags": "4/4", "summary": "CSRF 双站点靶场 4/4：GET转账img + POST表单自动提交 + no-referrer绕Referer + 假token；完成攻击者侦查流程"}}
 {"type": "advanced_topic_started", "ts": "2026-08-13T21:35:00+08:00", "data": {"topic": "file-upload-advanced", "summary": "文件上传漏洞学习开始：本质（webshell RCE）+ 为什么最高危"}}
 {"type": "advanced_topic_started", "ts": "2026-08-03T20:29:00+08:00", "data": {"topic": "src-huolala", "summary": "货拉拉 SRC 启动：读测试规范 + Burp 配置 + 信息收集"}}
+{"type": "advanced_topic_passed", "ts": "2026-08-14T15:05:00+08:00", "data": {"topic": "file-upload-advanced", "lab": "UploadForge", "flags": "5/5", "summary": "文件上传进阶 UploadForge 5/5：无检查/黑名单大小写/白名单双扩展名/Content-Type改头/图片马+Nginx解析漏洞"}}
+{"type": "advanced_topic_started", "ts": "2026-08-14T15:10:00+08:00", "data": {"topic": "xxe-advanced", "summary": "XXE 进阶学习开始：本质(XML外部实体=读文件+发请求) + 三种利用形态(OOB盲打参数实体)"}}

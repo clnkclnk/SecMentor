@@ -45,7 +45,7 @@
       "xss-advanced",
       "csrf"
     ],
-    "current_advanced": "file-upload-advanced"
+    "current_advanced": "xxe-advanced"
   },
   "current_stage": "P10",
   "current_topic": "capstone",
@@ -429,8 +429,8 @@
     "celebrations": true
   },
   "streak": {
-    "days": 5,
-    "last_study_date": "2026-08-13"
+    "days": 6,
+    "last_study_date": "2026-08-14"
   },
   "motivation": {
     "points_total": 745,
@@ -451,6 +451,16 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-14T15:05:00+08:00",
+      "summary": "文件上传进阶 UploadForge 5/5：L1直接传/L2黑名单大小写/L3双扩展名/L4改Content-Type/L5图片马+Nginx解析。B类已完 3/8。"
+    },
+    {
+      "type": "advanced_topic_started",
+      "ts": "2026-08-14T15:10:00+08:00",
+      "summary": "XXE 进阶学习开始（本质+三种利用形态，OOB盲打参数实体）。"
+    },
     {
       "type": "advanced_topic_passed",
       "ts": "2026-08-13T19:00:00+08:00",
@@ -540,17 +550,7 @@
       "type": "topic_passed",
       "ts": "2026-07-26T20:10:00+08:00",
       "summary": "P5 路径穿越 passed。6个..\\穿越目录层级读hosts文件。+25分，总分495。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-25T21:41:00+08:00",
-      "summary": "P4 文件上传 passed。上传shell.py落地WebShell触发RCE。+25分，总分470。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-25T20:54:00+08:00",
-      "summary": "P4 CSRF passed。构造CSRF攻击HTML+Token防护验证。+25分，总分445。"
     }
   ],
-  "updated_at": "2026-08-13T21:47:00+08:00"
+  "updated_at": "2026-08-14T22:30:00+08:00"
 }

@@ -25,5 +25,6 @@ build/
 # ===== 靶场运行时产物（数据库 + 上传目录，含用户上传的 shell，不入库） =====
 *.db
 labs/uploads/
+labs/uploadforge_uploads/
 labs/debug-response.html
 labs/csrf-lab.py
