@@ -45,7 +45,7 @@
       "xss-advanced",
       "csrf"
     ],
-    "current_advanced": "xxe-advanced"
+    "current_advanced": "lfi-advanced"
   },
   "current_stage": "P10",
   "current_topic": "capstone",
@@ -429,8 +429,8 @@
     "celebrations": true
   },
   "streak": {
-    "days": 6,
-    "last_study_date": "2026-08-14"
+    "days": 7,
+    "last_study_date": "2026-08-15"
   },
   "motivation": {
     "points_total": 745,
@@ -451,6 +451,21 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-15T22:00:00+08:00",
+      "summary": "反序列化进阶 SessionForge 3/3：__reduce__利用/Cookie入口/黑名单绕过(nt模块)。亲手完成，理解脚本=手。"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-15T12:25:00+08:00",
+      "summary": "XXE 进阶 XMLForge 3/3：侦察链读文件/SSRF/OOB盲打(evil.dtd+exfil)。掌握信目录不信文件名方法论。"
+    },
+    {
+      "type": "advanced_topic_started",
+      "ts": "2026-08-15T22:10:00+08:00",
+      "summary": "文件包含 LFI 开始（include当代码执行，图片马引信闭环）。"
+    },
     {
       "type": "advanced_topic_passed",
       "ts": "2026-08-14T15:05:00+08:00",
@@ -535,22 +550,7 @@
       "type": "topic_passed",
       "ts": "2026-07-29T19:28:00+08:00",
       "summary": "P6 XXE passed。XML外部实体读取系统文件+SSRF组合打内网拿FLAG。+25分，总分570。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-27T21:45:00+08:00",
-      "summary": "P6 SSRF passed。借服务器身份访问内网资源拿FLAG+泄露云密钥。+25分，总分545。"
-    },
-    {
-      "type": "stage_completed",
-      "ts": "2026-07-26T20:56:00+08:00",
-      "summary": "P5 文件类漏洞阶段全部通关！上传+下载+包含三漏洞。+50分，总分520。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-26T20:10:00+08:00",
-      "summary": "P5 路径穿越 passed。6个..\\穿越目录层级读hosts文件。+25分，总分495。"
     }
   ],
-  "updated_at": "2026-08-14T22:30:00+08:00"
+  "updated_at": "2026-08-15T22:30:00+08:00"
 }

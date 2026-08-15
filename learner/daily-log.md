@@ -5,6 +5,23 @@
 
 ---
 
+## 2026-08-15 · XXE 完成 + 反序列化完成 + 文件包含开始
+- **XXE 完成（XMLForge 双站点 3/3）**：
+  - FLAG1 有回显读文件（走完整侦察链：验证→报错泄露目录→站点名拼文件名 xmlforge_secret.txt）
+  - FLAG2 SSRF（SYSTEM 指向内部接口）
+  - FLAG3 OOB 盲打（参数实体 + evil.dtd + exfil 回攻击者站 5033）
+  - 深度洞察："报错路径的迷惑性"——信目录不信文件名（路径=服务器目录[真]+你猜的文件名[假]）
+  - 方法论：字典爆破 + 站点名拼名（真实 SRC 文件读取标准打法）
+- **反序列化完成（SessionForge 3/3，原理四块）**：
+  - 本质：还原瞬间执行代码（RCE 家族最隐蔽）；__reduce__ 返回 (函数, 参数)
+  - 真实世界：PHP unserialize/Java readObject（入口特征 O:4:/rO0AB）
+  - 防御：换 JSON / HMAC 签名 / 限类白名单
+  - FLAG2 Cookie 入口 + FLAG3 黑名单绕过（os.system 的 pickle 实际引用 nt 模块——黑名单漏等价路径）亲手完成
+  - 顿悟："脚本就是我的手"——脚本直接发 HTTP 请求，服务器只认请求不认网页
+- **文件包含 LFI 开始（第一块）**：include(用户控制路径) 把文件当代码执行 vs 路径穿越只读文件；图片马利用链闭环（include 是引信）
+- 生成工具：make_payload.py（payload 生成器）+ attack_cookie.py + attack_limited.py
+
+---
 ## 2026-08-14 · 文件上传完成 + XXE 开始
 - **文件上传重新学（四块原理）**：本质（信任内容→webshell RCE）→ 类型检查绕过（前端/黑名单/白名单/Content-Type/内容检查 5种对应绕过）→ 解析漏洞与图片马利用链 → 防御三层
 - **UploadForge 靶场（5031）5/5**：

@@ -15,3 +15,6 @@
 {"type": "advanced_topic_started", "ts": "2026-08-03T20:29:00+08:00", "data": {"topic": "src-huolala", "summary": "货拉拉 SRC 启动：读测试规范 + Burp 配置 + 信息收集"}}
 {"type": "advanced_topic_passed", "ts": "2026-08-14T15:05:00+08:00", "data": {"topic": "file-upload-advanced", "lab": "UploadForge", "flags": "5/5", "summary": "文件上传进阶 UploadForge 5/5：无检查/黑名单大小写/白名单双扩展名/Content-Type改头/图片马+Nginx解析漏洞"}}
 {"type": "advanced_topic_started", "ts": "2026-08-14T15:10:00+08:00", "data": {"topic": "xxe-advanced", "summary": "XXE 进阶学习开始：本质(XML外部实体=读文件+发请求) + 三种利用形态(OOB盲打参数实体)"}}
+{"type": "advanced_topic_passed", "ts": "2026-08-15T12:25:00+08:00", "data": {"topic": "xxe-advanced", "lab": "XMLForge", "flags": "3/3", "summary": "XXE 进阶完成 XMLForge 3/3：有回显读文件(侦察链+站点名拼名) + SSRF打内网 + OOB盲打(参数实体+evil.dtd+exfil回5033)"}}
+{"type": "advanced_topic_passed", "ts": "2026-08-15T22:00:00+08:00", "data": {"topic": "deserialization-advanced", "lab": "SessionForge", "flags": "3/3", "summary": "反序列化进阶完成 SessionForge 3/3：pickle __reduce__利用 + Cookie入口 + 黑名单绕过(os.system pickle引用nt模块)"}}
+{"type": "advanced_topic_started", "ts": "2026-08-15T22:10:00+08:00", "data": {"topic": "lfi-advanced", "summary": "文件包含 LFI 进阶学习开始：include把文件当代码执行，图片马引信闭环"}}
