@@ -45,7 +45,7 @@
       "xss-advanced",
       "csrf"
     ],
-    "current_advanced": "lfi-advanced"
+    "current_advanced": "ctf-practice"
   },
   "current_stage": "P10",
   "current_topic": "capstone",
@@ -429,8 +429,8 @@
     "celebrations": true
   },
   "streak": {
-    "days": 7,
-    "last_study_date": "2026-08-15"
+    "days": 1,
+    "last_study_date": "2026-08-24"
   },
   "motivation": {
     "points_total": 745,
@@ -451,6 +451,26 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "ctf_topic_passed",
+      "ts": "2026-08-24T01:38:00+08:00",
+      "summary": "CTFHub 基础认证：HTTP Basic Auth + 字典爆破(环境到期坑后 dragon 命中)。FLAG: ctfhub{361a79a93e0167a91223334f}"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-22T20:00:00+08:00",
+      "summary": "LFI 进阶 HCTF2018 WarmUp 完成：?截断过白名单+../穿透。FLAG: CTF2{7d4d75fc-f792-4839-bf4a-4b8a34d8ba10}"
+    },
+    {
+      "type": "src_recon_event",
+      "ts": "2026-08-16T22:30:00+08:00",
+      "summary": "货拉拉 SRC 实战：资产 9→16+ 子域（open/sign-sdk-v/dappweb/hllep.com 企业版），开放平台接口地图完整"
+    },
+    {
+      "type": "ctf_topic_started",
+      "ts": "2026-08-24T01:40:00+08:00",
+      "summary": "CTFHub 技能树练习开始（HTTP Method 环境bug待重试 + 基础认证已通过）"
+    },
     {
       "type": "advanced_topic_passed",
       "ts": "2026-08-15T22:00:00+08:00",
@@ -530,27 +550,7 @@
       "type": "topic_passed",
       "ts": "2026-07-31T19:36:00+08:00",
       "summary": "P9 中间件漏洞共性 + MySQL弱口令/未授权 passed。弱口令登录 admin/123456 → 未授权拖库 → 未授权拿FLAG。+25分，总分670。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-30T23:25:00+08:00",
-      "summary": "P9.1 Redis 未授权访问 passed。KEYS * 列光全部键、GET flag 读出 FLAG 无需密码。+25分，总分645。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-30T19:52:00+08:00",
-      "summary": "P6 RCE/命令注入 passed。用分号;逃逸出原ping命令追加whoami。+25分，总分620。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-29T21:49:00+08:00",
-      "summary": "P6 反序列化 passed。恶意pickle对象 __reduce__→_rce() 执行whoami。+25分，总分595。"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-29T19:28:00+08:00",
-      "summary": "P6 XXE passed。XML外部实体读取系统文件+SSRF组合打内网拿FLAG。+25分，总分570。"
     }
   ],
-  "updated_at": "2026-08-15T22:30:00+08:00"
+  "updated_at": "2026-08-24T01:40:00+08:00"
 }
