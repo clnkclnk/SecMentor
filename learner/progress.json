@@ -45,7 +45,7 @@
       "xss-advanced",
       "csrf"
     ],
-    "current_advanced": "ctf-practice"
+    "current_advanced": "path-traversal-advanced"
   },
   "current_stage": "P10",
   "current_topic": "capstone",
@@ -429,7 +429,7 @@
     "celebrations": true
   },
   "streak": {
-    "days": 1,
+    "days": 2,
     "last_study_date": "2026-08-24"
   },
   "motivation": {
@@ -451,6 +451,26 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "advanced_topic_started",
+      "ts": "2026-08-24T21:45:00+08:00",
+      "summary": "目录遍历进阶开始：../ 跳出限制目录读任意文件。绕过：编码/双写/绝对路径/反斜杠。phpinfo 概念（信息泄露）。CTFHub flag_in_here 思路（BFS 枚举）"
+    },
+    {
+      "type": "ctf_topic_passed",
+      "ts": "2026-08-24T01:38:00+08:00",
+      "summary": "CTFHub 基础认证：HTTP Basic Auth + 字典爆破(环境到期坑后 dragon 命中)。FLAG: ctfhub{361a79a93e0167a91223334f}"
+    },
+    {
+      "type": "advanced_topic_passed",
+      "ts": "2026-08-22T20:00:00+08:00",
+      "summary": "LFI 进阶 HCTF2018 WarmUp 完成：?截断过白名单+../穿透。FLAG: CTF2{7d4d75fc-f792-4839-bf4a-4b8a34d8ba10}"
+    },
+    {
+      "type": "src_recon_event",
+      "ts": "2026-08-16T22:30:00+08:00",
+      "summary": "货拉拉 SRC 实战：资产 9→16+ 子域，开放平台接口地图完整"
+    },
     {
       "type": "ctf_topic_passed",
       "ts": "2026-08-24T01:38:00+08:00",
@@ -530,27 +550,7 @@
       "type": "advanced_topic_passed",
       "ts": "2026-08-06T20:52:00+08:00",
       "summary": "盲注进阶 BlindBox：布尔盲注 + 时间盲注原理掌握。修复 progress.json 完整性。"
-    },
-    {
-      "type": "advanced_topic_passed",
-      "ts": "2026-08-05T21:30:00+08:00",
-      "summary": "SQL注入进阶 TechShop 3/3：UNION偷secrets + 登录绕过。"
-    },
-    {
-      "type": "advanced_topic_started",
-      "ts": "2026-08-03T20:29:00+08:00",
-      "summary": "货拉拉 SRC 启动：读测试规范 + Burp 配置 + 信息收集（发现 watch-dog/static/mdap-app 等子域名）。同步 SecMentor 框架到上游。"
-    },
-    {
-      "type": "stage_completed",
-      "ts": "2026-08-02T21:58:00+08:00",
-      "summary": "🎓 P10 毕业考 SecBlog 综合靶场全部通关！6/6 FLAG：①弱口令 admin/123456 → weakpwd_admin；②命令注入 127.0.0.1 & whoami → cmdi_root；③SSRF探Redis 127.0.0.1:6379 → ssrf_found_redis；④SSRF内部接口 → ssrf_internal；⑤上传绕过双扩展名.py.jpg → upload_bypass；⑥存储型XSS评论注入<script>偷cookie → secblog_xss_stored_2026。学员独立按渗透方法论逐个击破。+75分，总分745，Level 3 入室弟子！Web安全基础阶段P0~P10全部完成！"
-    },
-    {
-      "type": "topic_passed",
-      "ts": "2026-07-31T19:36:00+08:00",
-      "summary": "P9 中间件漏洞共性 + MySQL弱口令/未授权 passed。弱口令登录 admin/123456 → 未授权拖库 → 未授权拿FLAG。+25分，总分670。"
     }
   ],
-  "updated_at": "2026-08-24T01:40:00+08:00"
+  "updated_at": "2026-08-24T23:10:00+08:00"
 }

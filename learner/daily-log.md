@@ -213,3 +213,22 @@
 - 用户反馈三条（直接采纳）：① 不用老是图省事推 Python（除非他主动问）② 不要评论时间/进度 ③ 教学讲清「为什么」不甩代码
 
 ---
+
+## 2026-08-24 · 晚间：目录遍历讲解 + phpinfo + flag_in_here
+- **目录遍历漏洞讲解**（B 类最后专题点名）：
+  - 第一块本质：服务器拼用户输入进文件路径 → 攻击者用 ../../ 跳出限制目录读任意文件
+    - 漏洞代码：readfile('/var/www/uploads/' . $_GET['filename'])
+    - 危害：/etc/passwd、config.php 数据库密码、/proc/self/environ
+    - 三兄弟对比：XXE(file:// 读) = 目录遍历(../ 读) ≠ LFI(include 执行)
+  - 第二块绕过：真实环境过滤 ../ 的绕过对照表
+    - URL 编码 %2e%2e%2f / 双重编码 %252e / 大小写 / 双写 ....//（经典）/ 绝对路径 / 反斜杠（Windows）/ Null 字节（老版本）
+    - 方法论：先看响应判断过滤类型 → 选对应绕过，不盲试
+- **phpinfo 概念**：PHP 内置函数输出服务器全部环境信息（版本/扩展/disable_functions/open_basedir/环境变量/路径）
+  - 安全意义：攻击者靠它精准选择攻击方式；SRC 发现生产 phpinfo 页 = 低危信息泄露
+- **CTFHub flag_in_here 题思路**（目录列表 + 数字目录无限套娃）：
+  - 结构：4 个数字目录每层再嵌 4 个 → 4^N 组合，手点不可能
+  - 解法：BFS 爬虫（HEAD 请求 + Content-Length > 0 判断）+ 4^5=1024 次请求
+  - 或 ffuf + 路径字典 / dirsearch -r 递归
+  - 判断标准：HEAD /path/flag.txt → 200 + 长度非 0 = 找到
+
+---

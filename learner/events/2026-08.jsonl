@@ -22,3 +22,7 @@
 {"type": "src_recon_event", "ts": "2026-08-16T22:30:00+08:00", "data": {"topic": "huolala-src-recon", "summary": "货拉拉 SRC 实战重启：Filter=huolala.cn 抓真实流量，资产从 9 扩到 16+ 子域（open/sign-sdk-v/dappweb-api/hllep.com 等），确认工具链"}}
 {"type": "ctf_topic_passed", "ts": "2026-08-24T01:38:00+08:00", "data": {"topic": "auth-basic", "lab": "CTFHub-基础认证", "flags": "1/1", "summary": "CTFHub 基础认证：HTTP Basic Auth + 字典爆破。首次被环境到期+彩蛋flag坑了，续期后 admin/dragon 命中 FLAG: ctfhub{361a79a93e0167a91223334f}"}}
 {"type": "advanced_topic_started", "ts": "2026-08-24T01:40:00+08:00", "data": {"topic": "ctf-practice", "summary": "CTFHub 技能树练习开始：HTTP Method（环境bug待重试）+ 基础认证（dragon 已通过），接下来刷 Web 技能树各专题"}}
+{"type": "advanced_topic_started", "ts": "2026-08-24T21:45:00+08:00", "data": {"topic": "path-traversal-advanced", "summary": "目录遍历（路径穿越）进阶学习开始：../ 跳出限制目录读任意文件（XXE file:// 同族，LFI 是执行它是读）"}}
+{"type": "advanced_topic_passed", "ts": "2026-08-24T22:40:00+08:00", "data": {"topic": "path-traversal-bypass", "flags": "原理块", "summary": "目录遍历绕过技巧：URL编码/双写....//（经典）/绝对路径/反斜杠/Null字节——先看响应判断过滤再选绕过"}}
+{"type": "concept_learned", "ts": "2026-08-24T23:00:00+08:00", "data": {"topic": "phpinfo", "summary": "phpinfo 概念：输出服务器全部环境信息（版本/扩展/disable_functions/路径/环境变量），攻击者用来精准选攻击方式，SRC=低危泄露"}}
+{"type": "ctf_topic_started", "ts": "2026-08-24T23:10:00+08:00", "data": {"topic": "flag_in_here", "summary": "CTFHub flag_in_here：目录列表+数字目录无限套娃 → BFS 爬虫 HEAD 请求枚举（Content-Length>0 判断），思路已给待实操"}}
