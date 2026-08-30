@@ -232,3 +232,36 @@
   - 判断标准：HEAD /path/flag.txt → 200 + 长度非 0 = 找到
 
 ---
+
+## 2026-08-29 · 决定专注货拉拉 SRC
+- 与哥哥沟通后决定：**现在及往后一段时间专注挖货拉拉**（暂定 1-2 月），从零重做资产盘点（"清净"）
+- 开工五步：①确认授权范围 ②资产盘点 ③打标优先级 ④按已学漏洞检查单开测 ⑤记录复盘
+- 旧笔记 `huolala-src-recon.md` 作种子（9→16+ 子域 + 优先级表 + 访问验证结论）
+
+---
+
+## 2026-08-30 · 货拉拉 SRC 正式开工（授权范围 + 资产盘点 + 首二枪）
+- **第 1 步：授权范围确认（LLSRC）**：
+  - 平台：货拉拉安全应急响应中心（LLSRC），联系 llsrc@huolala.cn
+  - 不收：uimg-private/luna/luna-cdn-private/oimg 四个上传子域（内部已知）、dloc3（暂停）、Fastjson RCE、百度/高德/腾讯 key 泄露、用户名遍历、SPF 伪造、GitHub 开源项目代码漏洞、与模型提示词相关
+  - 奖励：1 积分=0.1 元；高危 1000 元 / 中危 500 元 / 低危 0-100 元
+  - 处理流程：提交 → 1天 → 审核(3天) → 确认 → 修复 → 关闭
+  - 报告要求：完整复现步骤+每步截图+完整 POST 包（Cookie 值可空保留字段名）
+- **第 2 步：资产盘点（新增 4 子域）**：
+  - ops-common-lgw.huolala.cn（内部基建 API）/ lalamc.huolala.cn / dappweb-api.huolala.cn（PHP 注册类）/ ltl-api.huolala.cn（业务 API 越权首选）
+  - 外部依赖（非目标）：miao.baidu.com / edge.microsoft.com / api.map.baidu.com / aefd.nelreports.net
+- **第 3 步：第一枪 static/schema（响应头信息泄露）**：
+  - 稳定信号：X-Oss-Cdn-Auth: fail（三次复现）+ Access-Control-Allow-Origin: * + Timing-Allow-Origin: *
+  - 内部泄露：HostId 暴露内部 OSS bucket `coupe-oss.oss-cn-shenzhen-internal.aliyuncs.com`（bucket 名+区域+内网域名）
+  - 框架情报：Server: Tengine + X-Swift-* 阿里云缓存链路
+- **第二枪 mdap-app?appId=（500 暴露框架）**：
+  - appId 可控改值 → 500 错误（无 SSRF/重定向，排除了该攻击面）
+  - 错误响应泄露：X-Kong-Upstream-Latency（API 网关是 Kong）+ Spring Boot 默认错误格式（后端 Java）
+  - CORS 配置是对的（白名单固定域非 *）
+- **Burp Repeater 排坑**（宝贵经验）：
+  - 阿里云 OSS 双条件缓存：If-Modified-Since + If-None-Match(ETag) 任一命中即 304，要拿 200 必须两个都删
+  - Burp 自动注入 Content-Length 到 GET 请求 → 413；改请求别用 Raw 文本编辑，用 Pretty 视图 Headers 列表
+  - schema JSON 需浏览器 Cookie 环境才能拿（无 Cookie 请求 404 NoSuchKey）→ Copy as cURL 是稳定路径
+- **进展**：第 1/2 步完成，第 3 步开测起步；首二枪无洞但收获情报（响应头泄露可拼低危报告）+ 实战经验
+
+---

@@ -26,3 +26,6 @@
 {"type": "advanced_topic_passed", "ts": "2026-08-24T22:40:00+08:00", "data": {"topic": "path-traversal-bypass", "flags": "原理块", "summary": "目录遍历绕过技巧：URL编码/双写....//（经典）/绝对路径/反斜杠/Null字节——先看响应判断过滤再选绕过"}}
 {"type": "concept_learned", "ts": "2026-08-24T23:00:00+08:00", "data": {"topic": "phpinfo", "summary": "phpinfo 概念：输出服务器全部环境信息（版本/扩展/disable_functions/路径/环境变量），攻击者用来精准选攻击方式，SRC=低危泄露"}}
 {"type": "ctf_topic_started", "ts": "2026-08-24T23:10:00+08:00", "data": {"topic": "flag_in_here", "summary": "CTFHub flag_in_here：目录列表+数字目录无限套娃 → BFS 爬虫 HEAD 请求枚举（Content-Length>0 判断），思路已给待实操"}}
+{"type": "src_recon_event", "ts": "2026-08-29T16:30:00+08:00", "data": {"target": "huolala", "summary": "决定专注货拉拉 SRC（与家人商定，暂定1-2月），从零重做资产盘点；旧笔记 huolala-src-recon.md 作种子（9→16+子域+优先级）"}}
+{"type": "src_recon_event", "ts": "2026-08-30T16:30:00+08:00", "data": {"target": "huolala", "summary": "LLSRC 授权范围确认（不收清单/报告要求/奖励1积分=0.1元/严禁扫描器）+ 资产盘点新增4子域（ops-common-lgw/lalamc/dappweb-api/ltl-api）"}}
+{"type": "src_recon_event", "ts": "2026-08-30T22:50:00+08:00", "data": {"target": "huolala", "summary": "第一枪 static/schema：响应头信息泄露（X-Oss-Cdn-Auth:fail + CORS* + 内部OSS bucket coupe-oss 深圳内网域名）；第二枪 mdap-app?appId 500 暴露 Kong+Spring Boot；schema JSON 需 Cookie 环境（Copy as cURL 路径待跑）"}}

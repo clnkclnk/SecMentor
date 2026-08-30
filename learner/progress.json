@@ -429,8 +429,8 @@
     "celebrations": true
   },
   "streak": {
-    "days": 2,
-    "last_study_date": "2026-08-24"
+    "days": 1,
+    "last_study_date": "2026-08-30"
   },
   "motivation": {
     "points_total": 745,
@@ -451,6 +451,33 @@
   },
   "last_weekly_review": null,
   "recent_events": [
+    {
+      "type": "src_recon_event",
+      "ts": "2026-08-29T16:30:00+08:00",
+      "data": {
+        "target": "huolala",
+        "summary": "决定专注货拉拉 SRC（与家人商定，暂定1-2月），从零重做资产盘点；旧笔记 huolala-src-recon.md 作种子（9→16+子域+优先级）"
+      },
+      "summary": "决定专注货拉拉 SRC（与家人商定，暂定1-2月），从零重做资产盘点；旧笔记 huolala-src-recon.md 作种子（9→16+子域+优先级）"
+    },
+    {
+      "type": "src_recon_event",
+      "ts": "2026-08-30T16:30:00+08:00",
+      "data": {
+        "target": "huolala",
+        "summary": "LLSRC 授权范围确认（不收清单/报告要求/奖励1积分=0.1元/严禁扫描器）+ 资产盘点新增4子域（ops-common-lgw/lalamc/dappweb-api/ltl-api）"
+      },
+      "summary": "LLSRC 授权范围确认（不收清单/报告要求/奖励1积分=0.1元/严禁扫描器）+ 资产盘点新增4子域（ops-common-lgw/lalamc/dappweb-api/ltl-api）"
+    },
+    {
+      "type": "src_recon_event",
+      "ts": "2026-08-30T22:50:00+08:00",
+      "data": {
+        "target": "huolala",
+        "summary": "第一枪 static/schema：响应头信息泄露（X-Oss-Cdn-Auth:fail + CORS* + 内部OSS bucket coupe-oss 深圳内网域名）；第二枪 mdap-app?appId 500 暴露 Kong+Spring Boot；schema JSON 需 Cookie 环境（Copy as cURL 路径待跑）"
+      },
+      "summary": "第一枪 static/schema：响应头信息泄露（X-Oss-Cdn-Auth:fail + CORS* + 内部OSS bucket coupe-oss 深圳内网域名）；第二枪 mdap-app?appId 500 暴露 Kong+Spring Boot；schema JSON 需 Cookie 环境（Copy as cURL 路径待跑）"
+    },
     {
       "type": "advanced_topic_started",
       "ts": "2026-08-24T21:45:00+08:00",
@@ -535,22 +562,7 @@
       "type": "advanced_topic_passed",
       "ts": "2026-08-10T21:58:00+08:00",
       "summary": "SSRF 进阶 NetPulse 4/4 逻辑链 + LinkPeek 3/3 + GameVault 条件竞争 4/4。生成学习方向全景图（32方向）。"
-    },
-    {
-      "type": "advanced_topic_passed",
-      "ts": "2026-08-09T21:03:00+08:00",
-      "summary": "SSTI 进阶 MailForge 3/3（含WAF绕过）+ 条件竞争 FlashSale 3/3。"
-    },
-    {
-      "type": "advanced_topic_passed",
-      "ts": "2026-08-07T22:31:00+08:00",
-      "summary": "SSTI WishBox 3/3：{{7*7}}→{{config}}→Python对象攀爬RCE。盲注第三关跳过（原理已掌握）。"
-    },
-    {
-      "type": "advanced_topic_passed",
-      "ts": "2026-08-06T20:52:00+08:00",
-      "summary": "盲注进阶 BlindBox：布尔盲注 + 时间盲注原理掌握。修复 progress.json 完整性。"
     }
   ],
-  "updated_at": "2026-08-24T23:10:00+08:00"
+  "updated_at": "2026-08-30T23:00:00+08:00"
 }
